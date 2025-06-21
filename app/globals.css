@@ -25,7 +25,7 @@ body {
 @layer utilities {
   /* Text styles */
     .text-30-extrabold {
-        @apply text-[30px] font-extrabold text-black;
+        @apply text-[30px] font-extrabold;
     }
 
     .text-30-bold {

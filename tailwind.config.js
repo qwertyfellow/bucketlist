@@ -24,6 +24,9 @@ module.exports = {
                 white: {
                     DEFAULT: "#FFFFFF",
                 },
+                chaitanya: {
+        DEFAULT: "#f0f", // or whatever hex value you prefer
+      },
             },
             fontFamily: {
                 sans: ["Open Sans", 'sans-serif'],
