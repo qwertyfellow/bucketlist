@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// TODO: Setup custom fonts here
+// TODO: Setup custom LOCAL fonts here if needed.
 
 export const metadata: Metadata = {
   title: "BucketList",
