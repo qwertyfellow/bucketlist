@@ -3,11 +3,13 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className="colored_container">
-      <main className={styles.main}>
-        <h1 className="heading">Whereas disregard and contempt for human rights have resulted</h1>
-        <p className="text-30-extrabold text-chaitanya">Open Sans Extrabold</p>
-        <p className="font-semibold bg-chaitanya">Open Sans Semibold</p>
-        <p className="font-normal">Open Sans Normal</p>
+      <main>
+        <h1 className="heading text-secondary">The Bucket List 🏖️ ✈️ 🚂</h1>
+        <p className="text-30-semibold text-white mb-5">Curated iternaries by the world famous travel influencers.</p>
+        <span>
+          <button className="bg-secondary rounded px-3 py-2 mr-2 text-white">Explore iternaries</button>
+          <button className="bg-secondary rounded px-3 py-2 mr-2 text-white">Sign up as creator</button>
+        </span>
       </main>
     </div>
   );

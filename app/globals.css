@@ -33,7 +33,7 @@ body {
     }
 
     .text-30-semibold {
-        @apply font-semibold text-[30px] text-black;
+        @apply font-semibold sm:text-[30px];
     }
 
     .text-26-semibold {
@@ -57,11 +57,11 @@ body {
     }
 
     .heading {
-        @apply font-bold bg-secondary py-3 text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+        @apply font-bold py-3 sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl;
     }
 
     .sub-heading {
-        @apply font-medium text-[20px] text-white max-w-2xl text-center break-words;
+        @apply font-medium text-[20px] text-white max-w-2xl break-words;
     }
 
     /* Layout styles */

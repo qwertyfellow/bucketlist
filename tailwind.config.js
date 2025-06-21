@@ -16,7 +16,7 @@ module.exports = {
                     DEFAULT: "#80CBC4",
                 },
                 secondary: {
-                    DEFAULT: "#FFB433"
+                    DEFAULT: "#212121"
                 },
                 black: {
                     DEFAULT: "#000000",
@@ -24,9 +24,9 @@ module.exports = {
                 white: {
                     DEFAULT: "#FFFFFF",
                 },
-                chaitanya: {
-        DEFAULT: "#f0f", // or whatever hex value you prefer
-      },
+                dark: {
+                  DEFAULT: "#16404D"
+                }
             },
             fontFamily: {
                 sans: ["Open Sans", 'sans-serif'],
