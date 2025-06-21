@@ -50,7 +50,7 @@
     }
 
     .heading {
-        @apply uppercase bg-black px-6 py-3 font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+        @apply uppercase bg-secondary py-3 font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
     }
 
     .sub-heading {
@@ -62,7 +62,7 @@
         @apply flex justify-between items-center;
     }
 
-    .pink_container {
+    .colored_container {
         @apply w-full bg-primary min-h-[530px] flex justify-center items-center flex-col py-10 px-6;
     }
 

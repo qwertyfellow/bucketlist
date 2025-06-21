@@ -13,19 +13,15 @@ module.exports = {
             },
             colors: {
                 primary: {
-                    DEFAULT: "#FF5566",
+                    DEFAULT: "#80CBC4",
                 },
                 secondary: {
-                  DEFAULT: "#FBE843"
+                    DEFAULT: "#FFB433"
                 },
                 black: {
-                    "100": "#333333",
-                    "200": "#141413",
-                    "300": "#7D8087",
                     DEFAULT: "#000000",
                 },
                 white: {
-                    "100": "#F7F7F7",
                     DEFAULT: "#FFFFFF",
                 },
             },
