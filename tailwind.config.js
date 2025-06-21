@@ -26,7 +26,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-              // Can define fonts here if needed.
+                sans: ["Open Sans", 'sans-serif'],
             },
             borderRadius: {
                 lg: "var(--radius)",

@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
 /* Root styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
 @tailwind base;
@@ -18,7 +25,7 @@
 @layer utilities {
   /* Text styles */
     .text-30-extrabold {
-        @apply text-[30px] font-extrabold text-white;
+        @apply text-[30px] font-extrabold text-black;
     }
 
     .text-30-bold {
@@ -50,7 +57,7 @@
     }
 
     .heading {
-        @apply uppercase bg-secondary py-3 font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+        @apply font-bold bg-secondary py-3 text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
     }
 
     .sub-heading {
