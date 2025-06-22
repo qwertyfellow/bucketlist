@@ -53,7 +53,7 @@ body {
     }
 
     .text-14-normal {
-        @apply font-normal text-sm text-white-100/80;
+        @apply font-normal text-sm text-black;
     }
 
     .heading {
@@ -70,7 +70,7 @@ body {
     }
 
     .colored_container {
-        @apply w-full bg-primary min-h-[530px] flex justify-center items-center flex-col py-10 px-6;
+        @apply w-full bg-primary min-h-[400px] flex justify-center items-center flex-col py-10 px-6;
     }
 
     .section_container {
@@ -143,5 +143,9 @@ body {
 
     .search-btn {
         @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
+    }
+
+    .url {
+        @apply hover:underline
     }
 }
