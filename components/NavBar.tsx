@@ -1,9 +1,19 @@
 // components/Navbar.tsx
+import { auth, signIn, signOut } from "@/auth";
 import Link from "next/link";
-// import { auth } from "@/auth"; // adjust the path based on where your auth.ts lives
+
+const loginHandler = async () => {
+    "use server"
+    await signIn("google")
+};
+
+const logoutHandler = async () => {
+    "use server"
+    await signOut()
+};
 
 export default async function Navbar() {
-  const session = true;
+  const session = await auth();
 
   return (
     <nav className="w-full ps-2">
@@ -27,7 +37,7 @@ export default async function Navbar() {
           </li>
           <li>
             {session? (
-              <form action="/api/auth/signout" method="POST">
+              <form action={logoutHandler}>
                 <button
                   type="submit"
                   className="bg-secondary rounded px-3 py-2 m-2 text-white"
@@ -36,7 +46,7 @@ export default async function Navbar() {
                 </button>
               </form>
             ) : (
-              <form action="/api/auth/signin" method="POST">
+              <form action={loginHandler}>
                 <button
                   type="submit"
                   className="bg-secondary rounded px-3 py-2 m-2 text-white"
