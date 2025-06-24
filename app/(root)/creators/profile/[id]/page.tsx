@@ -1,6 +1,7 @@
 import React from 'react'
+import { PageParams } from '@/constants/pages'
 
-const Page = () => {
+const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   return (
     <div>
         <h1>Creators profile page</h1>
