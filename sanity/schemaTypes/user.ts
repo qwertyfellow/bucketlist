@@ -1,9 +1,9 @@
 import { UserIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
-export const creator = defineType({
-    name: "creator",
-    title: "Creator",
+export const user = defineType({
+    name: "user",
+    title: "User",
     type: "document",
     icon: UserIcon, //Mainly shown on local sanity studio.
     fields: [
@@ -14,22 +14,12 @@ export const creator = defineType({
         }),
         defineField({
             name: "name",
-            type: "string",
-            title: "Full name",
-            description: "Test description to show on sanity console."
+            type: "string"
         }),
         defineField({
             name: "email",
             type: "string",
             validation: (Rule) => Rule.required().error("Please provide email address.")
-        }),
-        defineField({
-            name: "slug",
-            type: "slug",
-            options: {
-                source: "name",
-                maxLength: 96,
-            },
         }),
         defineField({
             name: "image",
@@ -44,7 +34,7 @@ export const creator = defineType({
             type: "string",
             initialValue: "user",
             options: {
-                list: ["creator"],
+                list: ["user"],
                 layout: "radio"
             }
         }),
@@ -54,6 +44,7 @@ export const creator = defineType({
             readOnly: true,
             initialValue: () => new Date().toISOString(),
         })
+
     ],
     preview: {
         select: {
