@@ -27,7 +27,7 @@ export const creator = defineType({
             name: "slug",
             type: "slug",
             options: {
-                source: "name",
+                source: (document) => `${document.name}-${document.authId}`,
                 maxLength: 96,
             },
         }),
