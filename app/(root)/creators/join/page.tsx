@@ -4,7 +4,7 @@ import { PageParams } from '@/constants/pages'
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   return (
     <div>
-        <h1>Creators editor page</h1>
+        <h1>Creators joining page</h1>
     </div>
   )
 }
