@@ -20,13 +20,14 @@ export const authOptions = {
         return false;
       }
       const existingUser = await client
-      .withConfig({useCdn: false}) // USE THIS, else newly added users are not reflected immediately.
+      .withConfig({useCdn: false})
       .fetch(FETCH_USER_BY_GOOGLE_ID_QUERY, {
         id: googleId,
       });
-      console.log("existingUser", existingUser)
 
-      if (!existingUser) {
+      if (existingUser) {
+        console.log("User already signed up.");
+      } else {
         await writeClient.create({
           _type: "user",
           authId: googleId,
@@ -36,10 +37,7 @@ export const authOptions = {
           bio: "A cool bio...",
           role: "user",
         });
-        console.log("################################################");
         console.log("User is just added.");
-        console.log("################################################");
-        return true;
       }
 
       return true;
