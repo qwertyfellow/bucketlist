@@ -5,6 +5,7 @@ import { FETCH_ALL_BUCKETLIST } from "@/sanity/queries/bucketlist";
 
 const Page = async () => {
   const bucketListItems = await client.fetch(FETCH_ALL_BUCKETLIST);
+  console.log(bucketListItems)
 
   return (
     <div className="section_container">
@@ -13,6 +14,7 @@ const Page = async () => {
         {bucketListItems.map((item: any) => (
           <BucketListCard
             key={item._id}
+            id={item._id}
             title={item.title}
             destination={item.destination}
             category={item.category}
