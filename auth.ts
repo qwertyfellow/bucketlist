@@ -41,6 +41,33 @@ export const authOptions = {
       }
 
       return true;
+    },
+    async jwt({ token, account }) {
+      if (account) {
+        console.log("First time sign in.")
+        const user = await client
+          .withConfig({ useCdn: false })
+          .fetch(FETCH_USER_BY_GOOGLE_ID_QUERY, {
+            id: account.providerAccountId,
+          });
+
+        if (user) {
+          token.id = user._id;
+          token.name = user.name;
+          token.email = user.email;
+          token.image = user.image;
+        }
+      }
+    return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string;
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
+        session.user.image = token.image as string;
+      }
+      return session;
     }
   }
 };
