@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 import { auth, signIn, signOut } from "@/auth";
 import Link from "next/link";
 
@@ -14,6 +13,7 @@ const logoutHandler = async () => {
 
 export default async function Navbar() {
   const session = await auth();
+  console.log("session", session)
 
   return (
     <nav className="w-full ps-2">

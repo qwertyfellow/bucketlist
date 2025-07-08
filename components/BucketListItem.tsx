@@ -23,10 +23,11 @@ export default function BucketListCard({
   likes,
   creatorName,
   creatorImage,
+  slug,
   id
 }: BucketListCardProps) {
   return (
-    <Link href={`/bucketlist/view/${id}`} className="no-underline">
+    <Link href={`/bucketlist/view/${slug}`} className="no-underline">
       <div className="rounded-[var(--radius)] shadow-md border border-gray-200 p-5 bg-white flex flex-col justify-between">
         {/* Title */}
         <h3 className="text-20-medium mb-3">{title}</h3>
