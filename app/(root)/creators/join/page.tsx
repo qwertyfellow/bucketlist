@@ -26,7 +26,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
       </div>
 
       {/* Rules section */}
-      <section className='section_container border-[1px] border-red-900'>
+      <section className='section_container'>
         <h2 className="sub-heading ">Points to be noted:</h2>
         <ul>
           <li>1. Please use <b>separate</b> accounts for creator and normal user, in-case you want to use this platform as both creator and user.</li>

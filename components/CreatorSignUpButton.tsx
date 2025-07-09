@@ -4,9 +4,8 @@ import { signIn } from 'next-auth/react';
 
 export default function CreatorSignupButton() {
   const handleClick = async () => {
-    await signIn("google", {
-      callbackUrl: "/creators/onboard?source=creator-join"
-    });
+    document.cookie = "loginType=creator; path=/; max-age=30"; // valid for 30 seconds
+    await signIn("google");
   };
 
   return (
