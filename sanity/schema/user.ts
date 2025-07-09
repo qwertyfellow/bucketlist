@@ -30,15 +30,6 @@ export const user = defineType({
             type: "text"
         }),
         defineField({
-            name: "role",
-            type: "string",
-            initialValue: "user",
-            options: {
-                list: ["user"],
-                layout: "radio"
-            }
-        }),
-        defineField({
             name: "createdAt",
             type: "datetime",
             readOnly: true,

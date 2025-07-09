@@ -40,13 +40,8 @@ export const creator = defineType({
             type: "text"
         }),
         defineField({
-            name: "role",
-            type: "string",
-            initialValue: "user",
-            options: {
-                list: ["creator"],
-                layout: "radio"
-            }
+            name: "isCreator",
+            type: "boolean"
         }),
         defineField({
             name: "createdAt",
