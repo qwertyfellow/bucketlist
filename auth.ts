@@ -56,6 +56,7 @@ export const authOptions = {
           token.name = user.name;
           token.email = user.email;
           token.image = user.image;
+          token.accountId = account?.providerAccountId;
         }
       }
     return token;
@@ -66,6 +67,7 @@ export const authOptions = {
         session.user.name = token.name as string;
         session.user.email = token.email as string;
         session.user.image = token.image as string;
+        Object.assign(session, {accountId: token.accountId})
       }
       return session;
     }

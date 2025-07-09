@@ -61,7 +61,7 @@ body {
     }
 
     .sub-heading {
-        @apply font-medium text-[20px] text-white max-w-2xl break-words;
+        @apply font-medium text-[20px] max-w-2xl break-words;
     }
 
     /* Layout styles */
@@ -74,7 +74,7 @@ body {
     }
 
     .section_container {
-        @apply px-6 py-10 max-w-7xl mx-auto;
+        @apply px-6 py-10 max-w-5xl mx-auto;
     }
 
     .tag {
