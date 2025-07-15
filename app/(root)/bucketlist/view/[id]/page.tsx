@@ -5,7 +5,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id
   return (
     <div>
-      <h1>The Bucket List viewing page</h1>
+      <h1>The Bucket List viewing page {id}</h1>
     </div>
   )
 }

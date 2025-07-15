@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageParams } from '@/constants/pages'
 import { auth } from '@/auth'
-import CreatorSignupButton from '@/components/CreatorSignUpButton'
+import CreatorSigninButton from '@/components/CreatorSignInButton'
 import { redirect } from 'next/navigation'
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
@@ -36,7 +36,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
               <h1 className="heading text-secondary">Onboard as a Travel Content Creator</h1>
               <p className="text-30-semibold text-white mb-5">Create and earn from your travel experiences.</p>
               <span>
-                <CreatorSignupButton />
+                <CreatorSigninButton />
               </span>
             </main>
           </div>

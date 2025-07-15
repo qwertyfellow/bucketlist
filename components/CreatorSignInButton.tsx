@@ -2,7 +2,7 @@
 
 import { signIn } from 'next-auth/react';
 
-export default function CreatorSignupButton() {
+export default function CreatorSigninButton() {
   const handleClick = async () => {
     document.cookie = "loginType=creator; path=/; max-age=30"; // valid for 30 seconds
     await signIn("google");
