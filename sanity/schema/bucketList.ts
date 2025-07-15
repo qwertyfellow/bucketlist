@@ -49,16 +49,19 @@ export const bucketList = defineType({
             type: "array",
             of: [{ type: "string" }],
         }),
+        // To be shown on preview page
         defineField({
             name: "views",
             type: "number",
             initialValue: 0
         }),
+        // To be shown on preview page
         defineField({
             name: "likes",
             type: "number",
             initialValue: 0
         }),
+        // To be shown on preview page
         defineField({
             name: "createdAt",
             type: "datetime",

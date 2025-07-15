@@ -10,7 +10,7 @@ export default function Home() {
         <p className="text-30-semibold text-white mb-5">Curated iternaries by the world famous travel influencers.</p>
         <span>
           <Link className="bg-secondary rounded px-3 py-2 m-2 text-white" href={"/explore"}>Explore itenaries</Link>
-          <Link className="bg-secondary rounded px-3 py-2 m-2 text-white" href={"/creators/join"}>Sign up as creator</Link>
+          <Link className="button_primary" href={"/creators/join"}>Sign up as creator</Link>
         </span>
       </main>
     </div>
