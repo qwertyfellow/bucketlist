@@ -10,11 +10,15 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   console.log("Session from bucketlist create page", session)
 
   return (
-    <div>
-      {/* // Todo 1: Add session check */}
-      {/* // Todo 2: Add bucketlist creation rules/guides */}
+    <>
+      <div className="showcase_container bg-primary mb-5">
+        <main>
+          <h1 className="heading text-secondary">The Bucket List Editor</h1>
+          <p className="text-30-semibold text-white mb-5">Use the below editor to create detailed itenary about your travel plan.</p>
+        </main>
+      </div>
       <BucketListForm />
-    </div>
+    </>
   );
 };
 
