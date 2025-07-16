@@ -13,7 +13,7 @@ export default function CreatorSigninButton() {
       className="bg-secondary rounded px-3 py-2 m-2 text-white"
       onClick={handleClick}
     >
-      Sign up with Google
+      Sign in with Google
     </button>
   );
 }
