@@ -3,8 +3,8 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className="showcase_container bg-primary">
-      <main>
+    <div className="showcase bg-primary">
+      <main className="section_container">
         <h1 className="heading text-secondary">The Bucket List 🏖️ ✈️ 🚂</h1>
         <p className="text-30-semibold text-white mb-5">Curated iternaries by the world famous travel influencers.</p>
         <span>

@@ -11,13 +11,15 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
 
   return (
     <>
-      <div className="showcase_container bg-primary mb-5">
-        <main>
+      <div className="showcase bg-primary">
+        <main className="section_container">
           <h1 className="heading text-secondary">The Bucket List Editor</h1>
           <p className="text-30-semibold text-white mb-5">Use the below editor to create detailed itenary about your travel plan.</p>
         </main>
       </div>
-      <BucketListForm />
+      <div className="mt-5">
+        <BucketListForm />
+      </div>
     </>
   );
 };
