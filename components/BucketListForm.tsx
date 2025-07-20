@@ -22,7 +22,7 @@ const BucketListForm = () => {
                 content: content
             }
 
-            await formSchema.parseAsync(formValues);
+            // await formSchema.parseAsync(formValues);
 
             // TODO 3: Create server action
             const result = await createBucketList(formData, content)

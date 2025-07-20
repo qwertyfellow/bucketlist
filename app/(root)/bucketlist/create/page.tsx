@@ -7,9 +7,7 @@ import NotACreatorProfile from '@/components/NotACreatorProfile';
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id;
-
   const session = await auth()
-  console.log("session from create page", session)
 
   const renderView = () => {
     if(!session) {
