@@ -5,6 +5,7 @@ import MDEditor from "@uiw/react-md-editor";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { formSchema } from "@/lib/validation/formSchema";
+import createBucketList from "@/lib/actions/bucketlist/createBucketList";
 
 const BucketListForm = () => {
 
@@ -22,20 +23,16 @@ const BucketListForm = () => {
             }
 
             await formSchema.parseAsync(formValues);
-            console.log("form parsed")
 
             // TODO 3: Create server action
-            const result = {
-                "status": "",
-                "_id": ""
-            }
+            const result = await createBucketList(formData, content)
             if(result.status == "SUCCESS") {
                 // toast({
                 //     title: "Success",
                 //     description: "Your startup has been submitted successfully.",
                 //     variant: "default"
                 // });
-                router.push(`/startup/${result._id}`)
+                router.push(`/bucketlist/view/${result._id}`)
             }
             return result;
         } catch (error) {
