@@ -14,7 +14,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const renderView = () => {
     if(!session) {
       return <NotLoggedIn />
-    } else if (session && session.loginType!="creator") {
+    } else if (session && session?.user?.loginType!= "creator") {
       return <NotACreatorProfile />
     } else {
       return<>
