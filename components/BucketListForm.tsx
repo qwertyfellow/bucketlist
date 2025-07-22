@@ -25,7 +25,7 @@ const BucketListForm = () => {
             }
 
             // 2. Validate the form values using zod defined schema.
-            // await formSchema.parseAsync(formValues);
+            await formSchema.parseAsync(formValues);
 
             // 3: Create bucketlist item using server action.
             const result = await createBucketList(formData, content)
