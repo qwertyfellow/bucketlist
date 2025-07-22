@@ -16,7 +16,7 @@ const createBucketList = async (formData: FormData, content: string) => {
     }
 
     // Destructure the data from nextJs formdata
-    const { title, description, category} = Object.fromEntries(
+    const { title, destination, description, category} = Object.fromEntries(
         Array.from(formData).filter(([key]) => key !== "pitch")
     );
 
@@ -25,6 +25,7 @@ const createBucketList = async (formData: FormData, content: string) => {
     try {
         const bucketList = {
             title: title,
+            destination: destination,
             description: description,
             category: category,
             content: content,

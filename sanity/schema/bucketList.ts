@@ -18,14 +18,22 @@ export const bucketList = defineType({
             validation: (Rule) => Rule.required().error("Please provide destination.")
         }),
         defineField({
-            name: "slug",
-            type: "slug",
-            options: {
-                source: (document) => `${document.title}-${document.creator?._ref || ""}`,
-                maxLength: 40,
-            },
-            validation: (Rule) => Rule.required(),
-            }),
+            name: "description",
+            type: "string",
+            validation: (Rule) => Rule.required().error("Please provide description.")
+        }),
+        /**
+         * Slug is not needed as of now.
+         */
+        // defineField({
+        //     name: "slug",
+        //     type: "slug",
+        //     options: {
+        //         source: (document) => `${document.title}-${document.creator?._ref || ""}`,
+        //         maxLength: 40,
+        //     },
+        //     validation: (Rule) => Rule.required(),
+        // }),
         defineField({
             name: "category",
             type: "string",

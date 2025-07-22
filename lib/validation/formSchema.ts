@@ -6,13 +6,16 @@ export const formSchema = z.object({
     }).max(100, {
         message: "Title can be maximum of length 100."
     }),
-    description: z.string().min(100, {
-        message: "Description should be minimum of length 100."
+    destination: z.string().min(1, {
+        message: "Destination is required."
+    }),
+    description: z.string().min(30, {
+        message: "Description should be minimum of length 30."
     }).max(1000, {
         message: "Description can be maximum length of 1000."
     }),
-    category: z.string().min(10, {
-        message: "Category should be minimum of length 10."
+    category: z.string().min(5, {
+        message: "Category should be minimum of length 5."
     }).max(20, {
         message: "Category should be maximum of length 20."
     }),

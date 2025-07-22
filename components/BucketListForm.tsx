@@ -15,16 +15,19 @@ const BucketListForm = () => {
 
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
+            // 1. Get the values from form data.
             const formValues = {
                 title: formData.get("title") as string,
+                destination: formData.get("destination") as string,
                 description: formData.get("description") as string,
                 category: formData.get("category") as string,
                 content: content
             }
 
+            // 2. Validate the form values using zod defined schema.
             // await formSchema.parseAsync(formValues);
 
-            // TODO 3: Create server action
+            // 3: Create bucketlist item using server action.
             const result = await createBucketList(formData, content)
             if(result.status == "SUCCESS") {
                 // toast({
@@ -32,12 +35,15 @@ const BucketListForm = () => {
                 //     description: "Your startup has been submitted successfully.",
                 //     variant: "default"
                 // });
+
+                // 4. Redirect the user to bucketlist preview page.
                 router.push(`/bucketlist/view/${result._id}`)
             }
             return result;
         } catch (error) {
             const formValues = {
                 title: formData.get("title") as string,
+                destination: formData.get("destination") as string,
                 description: formData.get("description") as string,
                 category: formData.get("category") as string,
                 content: content
@@ -96,6 +102,21 @@ const BucketListForm = () => {
                 defaultValue={state.data.title}
                 />
                 {errors.title && <p className="bucketlist-form_error">{errors.title}</p>}
+            </div>
+
+            <div className="space-y-2">
+                <label htmlFor="destination" className="bucketlist-form_label">
+                Destination
+                </label>
+                <input
+                id="destination"
+                name="destination"
+                className="bucketlist-form_input"
+                required
+                placeholder="Bucketlist destination"
+                defaultValue={state.data.destination}
+                />
+                {errors.destination && <p className="bucketlist-form_error">{errors.destination}</p>}
             </div>
 
             <div className="space-y-2">
