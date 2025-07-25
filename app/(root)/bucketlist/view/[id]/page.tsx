@@ -5,19 +5,23 @@ import NotLoggedIn from '@/components/NotLoggedIn'
 import NotACreatorProfile from '@/components/NotACreatorProfile'
 import { client } from '@/sanity/lib/client'
 import { FETCH_BUCKETLIST_BY_ID } from '@/sanity/queries/bucketlist'
+import NotAuthorised from '@/components/NotAuthorised'
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id
   const session = await auth()
 
   const bucketlist = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
-  console.log("bucketlist by id", bucketlist, session)
+  const isAuthorised = session?.user?.sanityId === bucketlist.creator._id
+  console.log("Logs from Bucketlist view page",bucketlist, session, isAuthorised)
 
   const renderView = () => {
     if(!session) {
       return <NotLoggedIn />
     } else if (session && session?.user?.loginType!= "creator") {
       return <NotACreatorProfile />
+    } else if (session && session?.user?.loginType == "creator" && isAuthorised) {
+      return <NotAuthorised />
     } else {
       return<>
         <div className="showcase bg-primary">

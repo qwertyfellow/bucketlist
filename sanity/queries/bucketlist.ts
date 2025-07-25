@@ -20,7 +20,7 @@ export const FETCH_ALL_BUCKETLIST = defineQuery(`
 `);
 
 export const FETCH_BUCKETLIST_BY_ID = defineQuery(`
-    *[_type == "bucketList" && _id == $id]
+    *[_type == "bucketList" && _id == $id][0]
     {
         _id,
         title,
