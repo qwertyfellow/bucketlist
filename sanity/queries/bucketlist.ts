@@ -25,6 +25,8 @@ export const FETCH_BUCKETLIST_BY_ID = defineQuery(`
         _id,
         title,
         destination,
+        description,
+        content,
         slug,
         category,
         tags,
