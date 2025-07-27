@@ -22,7 +22,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
             <p className="text-30-semibold text-white mb-5">Use the below editor to create detailed itenary about your travel plan.</p>
           </main>
         </div>
-        <div className="mt-5">
+        <div className="section_container">
           <BucketListForm />
         </div>
       </>
