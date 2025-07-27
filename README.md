@@ -12,3 +12,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ### Colors
 https://colorhunt.co/palette/80cbc4b4ebe6fbf8efffb433
+https://play.tailwindcss.com/uj1vGACRJA?layout=preview

@@ -36,10 +36,11 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
             <p className="text-30-semibold text-white mb-5">{description}</p>
           </main>
         </div>
-      <div
-        className="mt-5 section_container prose"
-        dangerouslySetInnerHTML={{ __html: parsedContent }}
-      />
+        {/* prose classname is specifically to fix the default css removed by tailwind. */}
+        <div
+          className="mt-5 section_container prose"
+          dangerouslySetInnerHTML={{ __html: parsedContent }}
+        />
       </>
     }
   }
