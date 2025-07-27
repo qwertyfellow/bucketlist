@@ -23,7 +23,7 @@ body {
 }
 
 @layer utilities {
-  /* Text styles */
+    /* Text styles */
     .text-30-extrabold {
         @apply text-[30px] font-extrabold;
     }
@@ -42,6 +42,10 @@ body {
 
     .text-24-black {
         @apply text-[24px] font-black text-black;
+    }
+
+    .text-20-semibold {
+        @apply font-semibold text-[20px] text-black
     }
 
     .text-20-medium {
@@ -77,8 +81,8 @@ body {
         @apply px-6 py-10 min-w-5 max-w-4xl mx-auto;
     }
 
-    .tag {
-        @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative tag-tri;
+    .badge {
+        @apply inline-block rounded-[4px] bg-secondary text-white text-sm font-bold px-3 py-1
     }
 
     .card_grid {
@@ -147,10 +151,6 @@ body {
 
     .url {
         @apply hover:underline
-    }
-
-    .tag-tri {
-        @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
     }
 
     /* Bucketlist form classes */

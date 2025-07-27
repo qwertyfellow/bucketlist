@@ -25,9 +25,9 @@ const createBucketList = async (formData: FormData, content: string) => {
     try {
         const bucketList = {
             title: title,
-            destination: destination,
+            destination: destination.toString().toUpperCase(),
             description: description,
-            category: category,
+            category: category.toString().toUpperCase(),
             content: content,
             creator: {
                 _type: "creator",

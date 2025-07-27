@@ -55,7 +55,7 @@ export default function BucketListCard({
                   alt={creatorName}
                   width={28}
                   height={28}
-                  className="rounded-full object-cover"
+                  className="avatar"
                 />
               )}
               <span className="text-sm font-medium text-black">{creatorName}</span>

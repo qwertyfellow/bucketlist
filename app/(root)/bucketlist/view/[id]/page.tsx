@@ -7,6 +7,7 @@ import { client } from '@/sanity/lib/client'
 import { FETCH_BUCKETLIST_BY_ID } from '@/sanity/queries/bucketlist'
 import NotAuthorised from '@/components/NotAuthorised'
 import markdownit from 'markdown-it'
+import Image from 'next/image'
 
 const md = markdownit();
 
@@ -17,9 +18,8 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const bucketlist = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
   const isAuthorised = session?.user?.sanityId === bucketlist.creator._id
 
-  const { title, category, content, destination, description } = bucketlist;
+  const { title, category, content, creator, destination, description, likes, views, } = bucketlist;
   const parsedContent = md.render(content || "");
-  console.log("Logs from Bucketlist view page",bucketlist, session, isAuthorised)
 
   const renderView = () => {
     if(!session) {
@@ -33,7 +33,27 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
         <div className="showcase bg-primary">
           <main className="section_container">
             <h1 className="heading text-secondary">{title}</h1>
-            <p className="text-30-semibold text-white mb-5">{description}</p>
+            <p className="text-30-semibold text-white mb-4">{description}</p>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                  <Image
+                  src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzxxL9QJwd8uvlxEfRNeIQ0f95csFDE_kRRg&s"}
+                  alt={creator?.name}
+                  width={28}
+                  height={28}
+                  className="avatar"
+                />
+                <p className="text-20-semibold">{creator?.name}</p>
+              </div>
+              <div>
+                <span className="badge mr-2">
+                  {category}
+                </span>
+                <span className="badge">
+                  {destination}
+                </span>
+              </div>
+            </div>
           </main>
         </div>
         {/* prose classname is specifically to fix the default css removed by tailwind. */}
@@ -42,11 +62,14 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
       </>
+      /**
+       * Add views
+       * Add likes
+       * Add isLive field
+       */
     }
   }
 
-  // 3. If session is present, query the sanity using the id from the url
-  // 4. Verify if the session id and the item.creator.id matches, else render not authorised page.
   return (
     <>
       {renderView()}
