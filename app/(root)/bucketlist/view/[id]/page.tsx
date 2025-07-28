@@ -8,6 +8,7 @@ import { FETCH_BUCKETLIST_BY_ID } from '@/sanity/queries/bucketlist'
 import NotAuthorised from '@/components/NotAuthorised'
 import markdownit from 'markdown-it'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 const md = markdownit();
 
@@ -16,7 +17,10 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const session = await auth()
 
   const bucketlist = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
-  const isAuthorised = session?.user?.sanityId === bucketlist.creator._id
+
+  // Handler when bucketlist not found use-case.
+  if(!bucketlist) return notFound();
+  const isAuthorised = session?.user?.sanityId === bucketlist?.creator?._id
 
   const { title, category, content, creator, destination, description, likes, views, } = bucketlist;
   const parsedContent = md.render(content || "");
