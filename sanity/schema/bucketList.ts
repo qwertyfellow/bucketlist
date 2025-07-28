@@ -13,6 +13,10 @@ export const bucketList = defineType({
             validation: (Rule) => Rule.min(10).max(100).required().error("Please provide title.")
         }),
         defineField({
+            name: "isLive",
+            type: "boolean",
+        }),
+        defineField({
             name: "destination",
             type: "string",
             validation: (Rule) => Rule.min(1).required().error("Please provide destination.")
@@ -20,7 +24,7 @@ export const bucketList = defineType({
         defineField({
             name: "description",
             type: "string",
-            validation: (Rule) => Rule.min(30).max(1000).required().error("Please provide description.")
+            validation: (Rule) => Rule.min(30).max(100).required().error("Please provide description.")
         }),
         /**
          * Slug is not needed as of now.
@@ -48,10 +52,6 @@ export const bucketList = defineType({
             name: "content",
             type: "markdown",
             validation: (Rule) => Rule.min(200).max(60000).required().error("Please provide at least 200 length of content.")
-        }),
-        defineField({
-            name: "isLive",
-            type: "boolean",
         }),
         defineField({
             name: "tags",

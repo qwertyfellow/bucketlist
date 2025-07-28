@@ -40,6 +40,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
             <p className="text-30-semibold text-white mb-4">{description}</p>
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
+                  <p className="text-20-semibold">by</p>
                   <Image
                   src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzxxL9QJwd8uvlxEfRNeIQ0f95csFDE_kRRg&s"}
                   alt={creator?.name}

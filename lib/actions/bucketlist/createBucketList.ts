@@ -6,7 +6,7 @@ import "server-only"
 
 const createBucketList = async (formData: FormData, content: string) => {
 
-    // Verify session details
+    // 1. Verify session details
     const session = await auth();
     if(!session) {
         return parseServerActionResponse({
@@ -15,13 +15,12 @@ const createBucketList = async (formData: FormData, content: string) => {
         })
     }
 
-    // Destructure the data from nextJs formdata
-    const { title, destination, description, category} = Object.fromEntries(
-        Array.from(formData).filter(([key]) => key !== "pitch")
+    // 2. Destructure the data from nextJs formdata
+    const { title, destination, description, category, isLive} = Object.fromEntries(
+        Array.from(formData).filter(([key]) => key !== "content")
     );
 
-
-    // Create bucketlist item
+    // 3. Create bucketlist item
     try {
         const bucketList = {
             title: title,
@@ -33,18 +32,16 @@ const createBucketList = async (formData: FormData, content: string) => {
                 _type: "creator",
                 _ref: session.user?.sanityId
             },
-            isLive: true
+            isLive: isLive === "true"
         }
 
-        // Use write client and write item to sanity
+        // 4. Use write client and write item to sanity
         const response = await writeClient.create({
             _type: "bucketList",
             ...bucketList
         })
 
-        console.log("response from action", response)
-
-        // Successful response
+        // 5. Successful response
         return parseServerActionResponse({
             ...response,
             error: "",
@@ -52,8 +49,7 @@ const createBucketList = async (formData: FormData, content: string) => {
         });
 
     } catch(error) {
-        // Error response
-        console.log(error);
+        // 6. Error response
         return parseServerActionResponse({
             status: "ERROR",
             error: JSON.stringify(error)
