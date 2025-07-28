@@ -19,8 +19,8 @@ export const formSchema = z.object({
     }).max(20, {
         message: "Category should be maximum of length 20."
     }),
-    content: z.string().min(500, {
-        message: "Content should be minimum of length 500."
+    content: z.string().min(200, {
+        message: "Content should be minimum of length 200."
     }).max(60000, {
         message: "Content can be maximum length of 60000."
     })
