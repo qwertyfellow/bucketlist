@@ -11,6 +11,7 @@ import markdownit from 'markdown-it'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import View from '@/components/View'
+import { Heart } from 'lucide-react';
 
 const md = markdownit();
 export const experimental_ppr = true;
@@ -25,7 +26,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   if(!bucketlist) return notFound();
   const isAuthorised = session?.user?.sanityId === bucketlist?.creator?._id
 
-  const { title, category, content, creator, destination, description, likes, views, } = bucketlist;
+  const { title, category, content, creator, destination, description, likes } = bucketlist;
   const parsedContent = md.render(content || "");
 
   const renderView = () => {
@@ -55,6 +56,13 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
               </div>
               <div>
                 <span className="badge mr-2">
+                  <Heart style={{
+                    display: "inline",
+                    height: "15px",
+                  }}/>
+                  {likes && likes != 0 ? ` liked by ${likes} ` : "No likes yet" }
+                </span>
+                <span className="badge mr-2">
                   {category}
                 </span>
                 <span className="badge">
@@ -74,7 +82,6 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
         </Suspense>
       </>
       /**
-       * Add likes
        * Add isLive indicator on next to title
        */
     }
