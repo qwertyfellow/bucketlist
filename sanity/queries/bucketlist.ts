@@ -38,3 +38,10 @@ export const FETCH_BUCKETLIST_BY_ID = defineQuery(`
         }
     }
 `);
+
+export const FETCH_BUCKETLIST_VIEWS_QUERY = defineQuery(
+  `*[_type=="bucketList" && _id == $id][0] {
+  _id, views
+  }
+  `
+);

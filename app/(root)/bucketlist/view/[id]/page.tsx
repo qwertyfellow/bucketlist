@@ -1,4 +1,5 @@
 import React from 'react'
+import { Suspense } from "react";
 import { PageParams } from '@/constants/pages'
 import { auth } from '@/auth'
 import NotLoggedIn from '@/components/NotLoggedIn'
@@ -9,8 +10,10 @@ import NotAuthorised from '@/components/NotAuthorised'
 import markdownit from 'markdown-it'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import View from '@/components/View'
 
 const md = markdownit();
+export const experimental_ppr = true;
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id
@@ -66,11 +69,13 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
           className="mt-5 section_container prose"
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
+        <Suspense fallback={<p>Loading...</p>}>
+          <View id={bucketlist._id}/>
+        </Suspense>
       </>
       /**
-       * Add views
        * Add likes
-       * Add isLive field
+       * Add isLive indicator on next to title
        */
     }
   }
