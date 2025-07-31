@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { formSchema } from "@/lib/validation/formSchema";
 import createBucketList from "@/lib/actions/bucketlist/createBucketList";
 
-const BucketListForm = () => {
+const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isLive, setIsLive] = useState(false);

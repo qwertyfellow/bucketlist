@@ -22,9 +22,6 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
     if(!bucketlist) return notFound();
     const isAuthorised = session?.user?.sanityId === bucketlist?.creator?._id
 
-    const { title, category, content, creator, destination, description, likes } = bucketlist;
-    const parsedContent = md.render(content || "");
-
     const renderView = () => {
         if(!session) {
         return <NotLoggedIn />
@@ -41,7 +38,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
             </main>
         </div>
         <div className="section_container">
-          <BucketListForm />
+          <BucketListForm editBucketlist={bucketlist}/>
         </div>
         </>
         /**
