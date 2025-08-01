@@ -11,7 +11,7 @@ const createBucketList = async (formData: FormData, content: string) => {
     if(!session) {
         return parseServerActionResponse({
             status: "ERROR",
-            error: "You must be logged in to create a startup."
+            error: "You must be logged in to create a bucketlist."
         })
     }
 

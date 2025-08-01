@@ -14,6 +14,10 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
     const [content, setContent] = useState("");
     const router = useRouter();
 
+    const editMode = editBucketlist;
+
+    console.log("editMode :: ", editMode ? "Edit mode true" : "not an edit mode")
+
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
             // 1. Get the values from form data.
@@ -86,7 +90,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
     const [state, formAction, isPending] = useActionState(handleFormSubmit, {
         error: "",
         status: "INITIAL",
-        data: {}
+        data: {title: editMode ? editBucketlist?.title: null}
     });
 
     return (

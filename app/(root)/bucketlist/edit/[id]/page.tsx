@@ -6,21 +6,20 @@ import NotLoggedIn from '@/components/NotLoggedIn'
 import NotACreatorProfile from '@/components/NotACreatorProfile'
 import NotAuthorised from '@/components/NotAuthorised'
 import { client } from '@/sanity/lib/client';
-import markdownit from 'markdown-it'
 import { FETCH_BUCKETLIST_BY_ID } from '@/sanity/queries/bucketlist';
 import BucketListForm from '@/components/BucketListForm';
 
-const md = markdownit();
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
 
     const id = (await params).id;
     const session = await auth();
 
-    const bucketlist = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
+    const bucketlistToBeEdited = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
+    const { title, description} = bucketlistToBeEdited;
+    const isAuthorised = session?.user?.sanityId === bucketlistToBeEdited?.creator?._id
 
     // Handler when bucketlist not found use-case.
-    if(!bucketlist) return notFound();
-    const isAuthorised = session?.user?.sanityId === bucketlist?.creator?._id
+    if(!bucketlistToBeEdited) return notFound();
 
     const renderView = () => {
         if(!session) {
@@ -38,13 +37,13 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
             </main>
         </div>
         <div className="section_container">
-          <BucketListForm editBucketlist={bucketlist}/>
+          <BucketListForm editBucketlist={bucketlistToBeEdited}/>
         </div>
-        </>
         /**
-         * Integrate bucketlist form component
-         * Populate the data on to the bucketlist form component
+        1. Update the form component to show values from edit item
+        2. Create another server action to handle edit flow
          */
+        </>
         }
     }
 
