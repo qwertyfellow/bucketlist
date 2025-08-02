@@ -4,14 +4,14 @@ import { parseServerActionResponse } from "@/lib/utils";
 import { writeClient } from "@/sanity/lib/writeClient";
 import "server-only"
 
-const createBucketListAction = async (formData: FormData, content: string) => {
+const editBucketListAction = async (bucketListId: string, formData: FormData, content: string) => {
 
     // 1. Verify session details
     const session = await auth();
     if(!session) {
         return parseServerActionResponse({
             status: "ERROR",
-            error: "You must be logged in to create a bucketlist."
+            error: "You must be logged in to edit a bucketlist."
         })
     }
 
@@ -22,7 +22,7 @@ const createBucketListAction = async (formData: FormData, content: string) => {
 
     // 3. Create bucketlist item
     try {
-        const bucketList = {
+        const toBeEditedBucketList = {
             title: title,
             destination: destination.toString().toUpperCase(),
             description: description,
@@ -35,11 +35,15 @@ const createBucketListAction = async (formData: FormData, content: string) => {
             isLive: isLive === "true"
         }
 
-        // 4. Use write client and write item to sanity
-        const response = await writeClient.create({
-            _type: "bucketList",
-            ...bucketList
-        })
+        // 4. Use write client and edit the item on sanity
+        const response = await writeClient
+                    .patch(bucketListId)
+                    .set({
+                        _type: "bucketList",
+                        ...toBeEditedBucketList
+                    })
+                    .commit();
+
 
         // 5. Successful response
         return parseServerActionResponse({
@@ -57,4 +61,4 @@ const createBucketListAction = async (formData: FormData, content: string) => {
     }
 };
 
-export default createBucketListAction;
+export default editBucketListAction;

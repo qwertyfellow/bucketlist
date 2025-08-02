@@ -39,10 +39,6 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
         <div className="section_container">
           <BucketListForm editBucketlist={bucketlistToBeEdited}/>
         </div>
-        /**
-        1. Update the form component to show values from edit item
-        2. Create another server action to handle edit flow
-         */
         </>
         }
     }

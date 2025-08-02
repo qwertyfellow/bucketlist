@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState, useActionState } from "react";
+import React, { useState, useActionState, useEffect } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { formSchema } from "@/lib/validation/formSchema";
-import createBucketList from "@/lib/actions/bucketlist/createBucketList";
+import createBucketListAction from "@/lib/actions/bucketlist/createBucketList";
+import editBucketListAction from "@/lib/actions/bucketlist/editBucketList";
 
 const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
@@ -14,9 +15,14 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
     const [content, setContent] = useState("");
     const router = useRouter();
 
-    const editMode = editBucketlist;
-
-    console.log("editMode :: ", editMode ? "Edit mode true" : "not an edit mode")
+    const editMode = editBucketlist!=null;
+    console.log("Edit mode :: ", editMode)
+    useEffect(() => {
+        if(editMode) {
+            setIsLive(editBucketlist?.isLive)
+            setContent(editBucketlist?.content)
+        }
+    }, [editMode])
 
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
@@ -33,8 +39,17 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
             // 2. Validate the form values using zod defined schema.
             await formSchema.parseAsync(formValues);
 
-            // 3: Create bucketlist item using server action.
-            const result = await createBucketList(formData, content)
+            // 3: Edit/Create bucketlist item using server action.
+            let result = null;
+            if(editMode) {
+                // 3.1 Edit the bucketlist
+                console.log(`Editing the bucketlist with id ${editBucketlist?._id}.`)
+                result = await editBucketListAction(editBucketlist?._id, formData, content)
+            } else {
+                // 3.2 Create the bucketlist
+                console.log("Creating the bucketlist.")
+                result = await createBucketListAction(formData, content)
+            }
             if(result.status == "SUCCESS") {
                 // toast({
                 //     title: "Success",
@@ -90,7 +105,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
     const [state, formAction, isPending] = useActionState(handleFormSubmit, {
         error: "",
         status: "INITIAL",
-        data: {title: editMode ? editBucketlist?.title: null}
+        data: editMode ? { ...editBucketlist } : {}
     });
 
     return (
