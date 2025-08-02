@@ -1,5 +1,5 @@
 import React from "react";
-import BucketListCard from "@/components/BucketListItem";
+import BucketListCard from "@/components/BucketListCard";
 import { client } from "@/sanity/lib/client";
 import { FETCH_ALL_BUCKETLIST } from "@/sanity/queries/bucketlist";
 
