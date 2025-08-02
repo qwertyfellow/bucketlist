@@ -10,6 +10,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const userEmail = session?.user?.email;
   const userName = session?.user?.name
 
+  // Disabling temporarily
   return notFound();
 
   if (session?.loginType === "creator") {

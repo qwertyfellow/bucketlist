@@ -16,6 +16,7 @@ const md = markdownit();
 export const experimental_ppr = true;
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
+
   const id = (await params).id
   const session = await auth()
 
@@ -72,6 +73,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
           className="mt-5 section_container prose"
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
+        {/* Add shimmer effect */}
         <Suspense fallback={<p>Loading...</p>}>
           <View id={bucketlist._id}/>
         </Suspense>
