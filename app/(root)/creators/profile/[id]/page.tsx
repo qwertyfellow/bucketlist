@@ -23,9 +23,6 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const isAuthorised = session?.user?.sanityId === creator?._id
 
   /**
-   * 1. Handle session not found use-case
-   * 2. Handle id not found use-case
-   * 3. Handle session and id does not match use-case
    * 4. Handle success case
    * 5. Link the profile page on the navbar
    */
@@ -33,9 +30,9 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const renderView = () => {
     if (!session) {
       return <NotLoggedIn />
-    } else if (session && session?.user?.loginType!="creator") {
+    } else if (session && session?.user?.loginType != "creator") {
       return <NotACreatorProfile />
-    } else if (session && session?.user?.loginType!="creator" && !isAuthorised) {
+    } else if (session && session?.user?.loginType == "creator" && !isAuthorised) {
       return <NotAuthorised />
     }
     return <div>
