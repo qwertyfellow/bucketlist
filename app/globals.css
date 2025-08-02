@@ -175,7 +175,7 @@ body {
     }
 
     .button_primary {
-        @apply bg-secondary rounded px-3 py-2 m-2 text-white;
+        @apply bg-secondary rounded px-3 py-2 mr-2 text-white;
     }
 
     /* view */

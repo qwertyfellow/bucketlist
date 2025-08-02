@@ -12,6 +12,7 @@ import BucketListCard from '@/components/BucketListItem';
 
 import { FETCH_CREATOR_BY_SANITY_ID_QUERY } from '@/sanity/queries/creator';
 import { FETCH_BUCKETLISTS_BY_CREATOR_ID } from '@/sanity/queries/bucketlist';
+import Link from 'next/link';
 
 const Page = async ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id;
@@ -82,8 +83,11 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
             </div>
             {/* <p className="text-30-semibold text-white mb-5">{bio}</p> */}
             <p className="text-30-semibold text-white mb-5">
-              This is the place where you can find all details related to your profile/account.
+              This is the place where you can find all details related to your account.
             </p>
+            <span>
+              <Link className="button_primary" href={"/bucketlist/create"}>Create a bucketlist</Link>
+            </span>
           </main>
         </div>
         <div className="section_container">
@@ -100,6 +104,5 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
 export default Page;
 
 /**
- * 1. Add Create CTA to Create a new item
  * 2. Add Edit and Delete buttons for each item
  */
