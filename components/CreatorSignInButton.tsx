@@ -1,5 +1,6 @@
 'use client';
 
+// Below import only works in client components.
 import { signIn } from 'next-auth/react';
 
 export default function CreatorSigninButton() {

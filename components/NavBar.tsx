@@ -1,15 +1,6 @@
-import { auth, signIn, signOut } from "@/auth";
+import { auth } from "@/auth";
+import { loginHandler, logoutHandler } from "@/lib/actions/auth/authentication";
 import Link from "next/link";
-
-const loginHandler = async () => {
-    "use server"
-    await signIn("google")
-};
-
-const logoutHandler = async () => {
-    "use server"
-    await signOut()
-};
 
 export default async function Navbar() {
   const session = await auth();
