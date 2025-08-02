@@ -21,12 +21,15 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const session = await auth()
 
   const bucketlist = await client.fetch(FETCH_BUCKETLIST_BY_ID, {id: id})
+
+  // Handler when bucketlist not found use-case.
+  if(!bucketlist) return notFound();
+
+  // Destructure the data
   const { title, category, content, creator, destination, description, likes } = bucketlist;
   const isAuthorised = session?.user?.sanityId === bucketlist.creator?._id
   const parsedContent = md.render(content || "");
 
-  // Handler when bucketlist not found use-case.
-  if(!bucketlist) return notFound();
 
 
   const renderView = () => {
