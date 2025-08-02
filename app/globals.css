@@ -186,6 +186,10 @@ body {
     .view-text {
         @apply font-medium text-[16px] bg-primary px-4 py-2 rounded-lg capitalize;
     }
+
+    .bottom-right-fixed {
+        @apply fixed bottom-4 right-4 z-50 text-primary font-semibold;
+    }
 }
 
 .w-md-editor-toolbar {

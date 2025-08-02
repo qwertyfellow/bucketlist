@@ -11,6 +11,7 @@ import markdownit from 'markdown-it'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import View from '@/components/View'
+import { Loader } from 'lucide-react';
 
 const md = markdownit();
 export const experimental_ppr = true;
@@ -77,7 +78,7 @@ const Page = async  ({ params }: { params: Promise<PageParams> }) => {
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
         {/* Add shimmer effect */}
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loader className="bottom-right-fixed"/>}>
           <View id={bucketlist._id}/>
         </Suspense>
       </>
