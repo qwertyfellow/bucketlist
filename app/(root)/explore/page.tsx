@@ -1,7 +1,7 @@
 import React from "react";
-import BucketListCard from "@/components/BucketListCard";
 import { client } from "@/sanity/lib/client";
 import { FETCH_ALL_BUCKETLIST } from "@/sanity/queries/bucketlist";
+import BucketListCard from "@/components/BucketListCard";
 
 const Page = async () => {
   const bucketListItems = await client.fetch(FETCH_ALL_BUCKETLIST);
@@ -27,12 +27,19 @@ const Page = async () => {
   };
 
   return (
-    <div className="section_container">
-      <h1 className="text-30-bold mb-6">Explore famous itenaries:</h1>
-      <div className="card_grid">
-        {renderView(bucketListItems)}
+    <>
+      <div className="showcase bg-primary">
+          <main className="section_container">
+              <h1 className="heading text-secondary">Explore all the great itenaries</h1>
+              <p className="text-30-semibold text-white mb-4">Crafted with care and love by your favourite travel influencers.</p>
+          </main>
       </div>
-    </div>
+      <div className="section_container">
+        <div className="card_grid">
+          {renderView(bucketListItems)}
+        </div>
+      </div>
+    </>
   );
 };
 
