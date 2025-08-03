@@ -16,16 +16,6 @@ export default async function Navbar() {
         {/* Nav items */}
         <ul className="flex space-x-4 items-center">
           <li>
-            <Link href="/about" className="text-16-medium url">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="text-16-medium url">
-              Contact
-            </Link>
-          </li>
-          <li>
             {session? (
               <form action={logoutHandler}>
                 <button
