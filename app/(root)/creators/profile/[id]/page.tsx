@@ -48,7 +48,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
         category={item.category}
         likes={item.likes}
         creatorName={item.creator.name}
-        creatorImage={item.creatorImage}
+        creatorImage={image}
         slug={item.slug?.current}
         />
       ))}

@@ -20,7 +20,7 @@ const Page = async () => {
         category={item.category}
         likes={item.likes}
         creatorName={item.creator.name}
-        creatorImage={item.creatorImage}
+        creatorImage={item?.creator?.image}
         slug={item.slug?.current}
       />
     ));

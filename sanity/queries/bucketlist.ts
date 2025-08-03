@@ -15,6 +15,7 @@ export const FETCH_ALL_BUCKETLIST = defineQuery(`
         creator -> {
             _id,
             name,
+            image
         }
     }
 `);

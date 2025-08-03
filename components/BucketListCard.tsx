@@ -13,7 +13,7 @@ type BucketListCardProps = {
   creatorName: string;
   creatorImage?: string;
   slug: string;
-  id: string
+  id: string;
 };
 
 export default function BucketListCard({
@@ -28,37 +28,37 @@ export default function BucketListCard({
 }: BucketListCardProps) {
   return (
     <Link href={`/bucketlist/view/${id}`} className="no-underline">
-      <div className="rounded-[var(--radius)] shadow-md border border-gray-200 p-5 bg-white flex flex-col justify-between">
+      <div className="relative rounded-[var(--radius)] shadow-md border border-gray-200 bg-white flex flex-col justify-between min-h-[280px] overflow-hidden p-5 transition-transform duration-200 ease-in-out hover:scale-[1.05]">
         {/* Title */}
-        <h3 className="text-20-medium mb-3">{title}</h3>
+        <h3 className="text-20-medium mb-3 line-clamp-2">{title}</h3>
 
-        {/* Destination (optional) */}
-        <p className="text-14-normal text-gray-600 mb-2">{destination}</p>
+        {/* Gradient footer section */}
+        <div className="absolute inset-x-0 bottom-0 px-5 py-4 bg-gradient-to-t from-white via-white/80 to-transparent">
+          {/* Destination + Likes */}
+          <div className="flex justify-between items-center mb-2">
+            <p className="text-14-normal text-gray-600 badge">{destination}</p>
 
-        {/* Footer */}
-        <div className="flex-between mt-auto pt-4 border-t border-gray-100">
-          {/* Category Chip */}
-          <span className="text-xs">{category}</span>
-
-          <div className="flex items-center gap-3">
-            {/* Likes */}
             <div className="flex items-center text-sm text-gray-500">
               <Heart className="size-4 mr-1 text-red-500" />
               {likes}
             </div>
+          </div>
 
-            {/* Creator */}
+          {/* Category + Creator */}
+          <div className="flex-between pt-2 border-t border-gray-100">
+            <span className="text-xs">{category}</span>
+
             <div className="flex items-center gap-2">
-              {true && (
+              {creatorImage && (
                 <Image
-                  src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzxxL9QJwd8uvlxEfRNeIQ0f95csFDE_kRRg&s"}
+                  src={creatorImage}
                   alt={creatorName}
-                  width={28}
-                  height={28}
+                  width={18}
+                  height={18}
                   className="avatar"
                 />
               )}
-              <span className="text-sm font-medium text-black">{creatorName}</span>
+              <span className="text-sm font-medium text-black">by {creatorName}</span>
             </div>
           </div>
         </div>
