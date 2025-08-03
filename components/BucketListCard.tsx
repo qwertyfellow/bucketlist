@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 type BucketListCardProps = {
   title: string;
@@ -26,9 +27,18 @@ export default function BucketListCard({
   slug,
   id
 }: BucketListCardProps) {
+  // Generate random pastel background using HSL
+  const randomBg = useMemo(() => {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 70%, 90%)`; // Light pastel shade
+  }, [id]); // use `id` as stable seed for consistency
+
   return (
     <Link href={`/bucketlist/view/${id}`} className="no-underline">
-      <div className="relative rounded-[var(--radius)] shadow-md border border-gray-200 bg-white flex flex-col justify-between min-h-[280px] overflow-hidden p-5 transition-transform duration-200 ease-in-out hover:scale-[1.05]">
+      <div
+        style={{ backgroundColor: randomBg }}
+        className="relative rounded-[var(--radius)] shadow-md border border-gray-200 flex flex-col justify-between min-h-[280px] overflow-hidden p-5 transition-transform duration-200 ease-in-out hover:scale-[1.05]"
+      >
         {/* Title */}
         <h3 className="text-20-medium mb-3 line-clamp-2">{title}</h3>
 
