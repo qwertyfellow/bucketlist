@@ -6,6 +6,7 @@ import { writeClient } from "@/sanity/lib/writeClient";
 import "server-only";
 
 const deleteBucketListAction = async (bucketListId: string) => {
+    console.log("id", bucketListId)
 
     // 1. Verify session details
     const session = await auth();

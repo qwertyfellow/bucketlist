@@ -10,7 +10,7 @@ export const bucketList = defineType({
         defineField({
             name: "title",
             type: "string",
-            validation: (Rule) => Rule.min(10).max(100).required().error("Please provide title.")
+            validation: (Rule) => Rule.min(10).max(40).required().error("Please provide title.")
         }),
         defineField({
             name: "isLive",

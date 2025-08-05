@@ -144,6 +144,14 @@ body {
         @apply bg-secondary rounded px-3 py-2 mr-2 text-white;
     }
 
+    .button_danger {
+        @apply bg-red-800 rounded px-5 py-1 mr-2 text-white;
+    }
+
+    .button_info {
+        @apply bg-blue-600 rounded px-5 py-1 mr-2 text-white;
+    }
+
     /* views */
     .view-container {
         @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
