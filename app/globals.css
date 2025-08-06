@@ -74,11 +74,11 @@ body {
     }
 
     .showcase {
-        @apply w-full min-h-[400px] flex justify-center items-center flex-col py-10 px-6;
+        @apply w-full min-h-[400px] flex flex-col py-10 px-6;
     }
 
     .section_container {
-        @apply px-6 py-10 min-w-5 max-w-4xl mx-auto;
+        @apply px-6 py-10 w-full max-w-4xl mx-auto;
     }
 
     .badge {
