@@ -11,9 +11,9 @@ import markdownit from 'markdown-it'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import View from '@/components/View'
-import { Edit, Loader, Trash } from 'lucide-react';
+import { Edit, Loader} from 'lucide-react';
 import Link from 'next/link';
-import deleteBucketListAction from '@/lib/actions/bucketlist/deleteBucketList';
+import DeleteBucketlistButton from '@/components/DeleteBucketList';
 
 const md = markdownit();
 export const experimental_ppr = true;
@@ -67,8 +67,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
                     <p>Edit</p>
                   </Link>
                   <div className='flex items-center gap-1 button_danger'>
-                    <Trash width={"15px"} height={"15px"}/>
-                    <button className="btn btn-secondary" onClick={deleteBucketListAction}>Delete</button>
+                    <DeleteBucketlistButton id={id} creatorId={bucketlist.creator?._id}/>
                   </div>
                 </div>
               </div>
