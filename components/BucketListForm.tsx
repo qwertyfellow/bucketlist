@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useActionState, useEffect } from "react";
+import { toast } from 'sonner'
 import MDEditor from "@uiw/react-md-editor";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
@@ -51,11 +52,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 result = await createBucketListAction(formData, content)
             }
             if(result.status == "SUCCESS") {
-                // toast({
-                //     title: "Success",
-                //     description: "Your startup has been submitted successfully.",
-                //     variant: "default"
-                // });
+                toast.success("Your itinerary has been created successfully.");
 
                 // 4. Redirect the user to bucketlist preview page.
                 router.push(`/bucketlist/view/${result._id}`)
@@ -73,11 +70,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
             if (error instanceof z.ZodError) {
                 const fieldErrors = error.flatten().fieldErrors;
                 setErrors(fieldErrors as unknown as Record<string, string>);
-                // toast({
-                //     title: "Validation error.",
-                //     description: "Please check the form fields.",
-                //     variant: "destructive",
-                // });
+                toast.error("Please fix the validation errors.");
                 return {
                     ...prevState,
                     error: "Validation error.",
@@ -86,12 +79,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 }
             }
 
-            // toast({
-            //     title: "Unexpected error.",
-            //     description: "Please check the form fields.",
-            //     variant: "destructive"
-            // });
-
+            toast.error("Something went wrong. Please try again.");
             return {
                 ...prevState,
                 error: "Something went wrong.",

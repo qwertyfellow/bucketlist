@@ -1,9 +1,11 @@
-import Navbar from '@/components/NavBar';
 import React from 'react'
+import Navbar from '@/components/NavBar';
+import { Toaster } from 'sonner';
 
 const Layout = ({children}: {children: React.ReactNode}) => {
   return (
     <div>
+        <Toaster position="top-right" richColors={true}/>
         <Navbar />
         {children}
     </div>
