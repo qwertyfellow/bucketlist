@@ -61,7 +61,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
                 </div>
 
                 {/* Right: Edit & Delete buttons */}
-                <div className="flex gap-2">
+                {isAuthorised && <div className="flex gap-2">
                   <Link href={`/bucketlist/edit/${id}`} className='flex items-center gap-1 button_info'>
                     <Edit width={"15px"} height={"15px"}/>
                     <p>Edit</p>
@@ -69,7 +69,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
                   <div className='flex items-center gap-1 button_danger'>
                     <DeleteBucketlistButton id={id} creatorId={bucketlist.creator?._id}/>
                   </div>
-                </div>
+                </div>}
               </div>
 
               {/* Author Info */}
