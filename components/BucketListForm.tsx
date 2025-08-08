@@ -129,16 +129,6 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
             </div>
 
             <div className="space-y-2">
-                <label className="inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="" className="sr-only peer" checked={isLive} onChange={(e) => setIsLive(e.target.checked)}/>
-                <input type="hidden" name="isLive" value={isLive ? "true" : "false"} />
-                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Is it live ? <strong>(Making it live shows it to all users)</strong></span>
-                </label>
-                {errors.isLive && <p className="bucketlist-form_error">{errors.isLive}</p>}
-            </div>
-
-            <div className="space-y-2">
                 <label htmlFor="description" className="bucketlist-form_label">
                 Description
                 </label>
@@ -163,7 +153,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 name="category"
                 className="bucketlist-form_input"
                 required
-                placeholder="Bucketlist category [ADVENTURE, FUN, BEACHES...]"
+                placeholder="Bucketlist category Ex. Adventure, Beach, Cultural etc"
                 defaultValue={state.data.category}
                 />
                 {errors.category && <p className="bucketlist-form_error">{errors.category}</p>}
@@ -179,7 +169,16 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 height={300}
                 value={content}
                 onChange={(value) => setContent(value as string)}
-                textareaProps={{ placeholder: "Describe your itinerary..." }}
+                textareaProps={
+                    {
+                        placeholder: `Describe your itinerary in detail using markdown.
+A good itinerary should have day to day accomodation, food details.
+Entire travel details
+Entire activities experienced during trip
+Any particular things to be careful about during trip
+Good to know things etc etc.`
+                    }
+                }
                 style={{
                     borderRadius: "12px",
                     border: "1px solid #e5e7eb",
@@ -188,6 +187,49 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 />
                 {errors.content && <p className="bucketlist-form_error">{errors.content}</p>}
             </div>
+
+            <div className="space-y-2 w-full">
+                <label className="flex flex-wrap items-center gap-4 cursor-pointer w-full">
+                    <div className="relative group w-11 min-w-[44px] h-6">
+                    <input
+                        type="checkbox"
+                        checked={isLive}
+                        onChange={(e) => setIsLive(e.target.checked)}
+                        className="sr-only"
+                    />
+                    <input type="hidden" name="isLive" value={isLive ? "true" : "false"} />
+
+                    {/* Track */}
+                    <div
+                        className={`
+                        absolute top-0 left-0 w-full h-full rounded-full transition-colors duration-200
+                        ${isLive ? "bg-blue-600" : "bg-gray-200"} 
+                        group-active:bg-blue-500
+                        `}
+                    />
+
+                    {/* Thumb */}
+                    <div
+                        className={`
+                        absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white border border-gray-300 transition-transform duration-200
+                        ${isLive ? "translate-x-full border-white" : ""}
+                        `}
+                    />
+                    </div>
+
+                    {/* Label */}
+                    <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-1">
+                    Make it live?{" "}
+                    <strong>
+                        (Making it live shows it to all users on the internet. You can change
+                        it on the profile page later too)
+                    </strong>
+                    </span>
+                </label>
+                {/* Error */}
+                {errors.isLive && <p className="bucketlist-form_error">{errors.isLive}</p>}
+            </div>
+
 
             <button
                 type="submit"

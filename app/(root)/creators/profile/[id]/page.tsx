@@ -85,9 +85,6 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
             <p className="text-30-semibold text-white mb-5">
               This is the place where you can find all details related to your account.
             </p>
-            <span>
-              <Link className="button_primary" href={"/bucketlist/create"}>Create a bucketlist</Link>
-            </span>
           </main>
         </div>
         <div className="section_container">

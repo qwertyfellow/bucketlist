@@ -40,6 +40,10 @@ body {
         @apply font-semibold text-[26px] text-black;
     }
 
+    .text-16-semibold {
+        @apply font-semibold text-[16px] text-black;
+    }
+
     .text-24-black {
         @apply text-[24px] font-black text-black;
     }
@@ -133,7 +137,7 @@ body {
     }
 
     .bucketlist-form_label {
-        @apply block text-sm font-medium text-gray-700 text-16-medium;
+        @apply block text-sm font-medium text-gray-700 text-16-semibold;
     }
 
     .bucketlist-form_input {
