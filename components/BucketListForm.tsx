@@ -222,7 +222,7 @@ Good to know things etc etc.`
                     Make it live?{" "}
                     <strong>
                         (Making it live shows it to all users on the internet. You can change
-                        it on the profile page later too)
+                        it on the profile page later too.)
                     </strong>
                     </span>
                 </label>
