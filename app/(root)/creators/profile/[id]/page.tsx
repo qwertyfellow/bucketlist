@@ -12,7 +12,6 @@ import BucketListCard from '@/components/BucketListCard';
 
 import { FETCH_CREATOR_BY_SANITY_ID_QUERY } from '@/sanity/queries/creator';
 import { FETCH_BUCKETLISTS_BY_CREATOR_ID } from '@/sanity/queries/bucketlist';
-import Link from 'next/link';
 
 const Page = async ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id;
@@ -31,13 +30,23 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
   const renderBucketListItems = (items: any[]) => {
     if (items?.length === 0) {
       return <>
-        <h1 className="sub-heading text-secondary">No bucketlists found</h1>
-        <p className="text-14-normal mb-5">Please create new bucketlists</p>
+        <div className='flex flex-col justify-center items-center'>
+          <Image
+            src="/empty.png"
+            alt="No content found"
+            width={250}
+            height={250}
+          />
+          <h1 className="sub-heading text-secondary mb-2">No bucketlists found</h1>
+          <h3 className="text-20-semibold mb-5">Please create new bucketlists</h3>
+        </div>
       </>
     }
 
     return <>
-    <p className="text-14-normal mb-5">You can edit, make live, delete the below items.</p>
+    <h1 className="text-30-bold mb-2">Your bucketlists</h1>
+    <p className="text-14-normal">You can edit, make live, delete the below itineraries by clicking on the itinerary.</p>
+    <hr className='mb-5'/>
     <div className="card_grid">
       {items.map((item: any) => (
         <BucketListCard
@@ -88,7 +97,6 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
           </main>
         </div>
         <div className="section_container">
-          <h1 className="text-30-bold mb-2">Your bucketlists</h1>
           {renderBucketListItems(bucketListItems)}
         </div>
       </>

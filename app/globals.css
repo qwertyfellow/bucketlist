@@ -140,12 +140,9 @@ body {
         @apply block text-sm font-medium text-gray-700 text-16-semibold;
     }
 
-    .bucketlist-form_input {
-        @apply w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary;
-    }
-
+    .bucketlist-form_input,
     .bucketlist-form_textarea {
-        @apply w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none;
+        @apply w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary;
     }
 
     .bucketlist-form_error {
