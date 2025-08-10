@@ -1,9 +1,9 @@
 import React from 'react';
 import { PageParams } from '@/constants/pages';
-import BucketListForm from '@/components/BucketListForm';
+import BucketListForm from '@/components/BucketList/BucketListForm';
 import { auth } from '@/auth';
-import NotLoggedIn from '@/components/NotLoggedIn';
-import NotACreatorProfile from '@/components/NotACreatorProfile';
+import NotLoggedIn from '@/components/Auth/NotLoggedIn';
+import NotACreatorProfile from '@/components/Auth/NotACreatorProfile';
 
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
   const id = (await params).id;

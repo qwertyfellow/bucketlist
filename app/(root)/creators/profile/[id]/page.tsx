@@ -5,10 +5,10 @@ import { auth } from '@/auth';
 import { client } from '@/sanity/lib/client';
 
 import { PageParams } from '@/constants/pages'
-import NotLoggedIn from '@/components/NotLoggedIn';
-import NotACreatorProfile from '@/components/NotACreatorProfile';
-import NotAuthorised from '@/components/NotAuthorised';
-import BucketListCard from '@/components/BucketListCard';
+import NotLoggedIn from '@/components/Auth/NotLoggedIn';
+import NotACreatorProfile from '@/components/Auth/NotACreatorProfile';
+import NotAuthorised from '@/components/Auth/NotAuthorised';
+import BucketListCard from '@/components/BucketList/BucketListCard';
 
 import { FETCH_CREATOR_BY_SANITY_ID_QUERY } from '@/sanity/queries/creator';
 import { FETCH_BUCKETLISTS_BY_CREATOR_ID } from '@/sanity/queries/bucketlist';

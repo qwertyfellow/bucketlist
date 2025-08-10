@@ -1,7 +1,7 @@
 import React from "react";
 import { client } from "@/sanity/lib/client";
 import { FETCH_ALL_BUCKETLIST } from "@/sanity/queries/bucketlist";
-import BucketListCard from "@/components/BucketListCard";
+import BucketListCard from "@/components/BucketList/BucketListCard";
 
 const Page = async () => {
   const bucketListItems = await client.fetch(FETCH_ALL_BUCKETLIST);

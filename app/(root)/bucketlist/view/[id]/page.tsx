@@ -2,9 +2,9 @@ import React from 'react'
 import { Suspense } from "react";
 import { PageParams } from '@/constants/pages'
 import { auth } from '@/auth'
-import NotLoggedIn from '@/components/NotLoggedIn'
-import NotACreatorProfile from '@/components/NotACreatorProfile'
-import NotAuthorised from '@/components/NotAuthorised'
+import NotLoggedIn from '@/components/Auth/NotLoggedIn'
+import NotACreatorProfile from '@/components/Auth/NotACreatorProfile'
+import NotAuthorised from '@/components/Auth/NotAuthorised'
 import { client } from '@/sanity/lib/client'
 import { FETCH_BUCKETLIST_BY_ID } from '@/sanity/queries/bucketlist'
 import markdownit from 'markdown-it'
@@ -13,7 +13,7 @@ import { notFound } from 'next/navigation'
 import View from '@/components/View'
 import { Edit, Loader} from 'lucide-react';
 import Link from 'next/link';
-import DeleteBucketlistButton from '@/components/DeleteBucketList';
+import DeleteBucketlistButton from '@/components/BucketList/DeleteBucketList';
 
 const md = markdownit();
 export const experimental_ppr = true;
