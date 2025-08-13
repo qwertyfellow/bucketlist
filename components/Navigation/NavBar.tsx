@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { loginHandler, logoutHandler } from "@/lib/actions/auth/authentication";
 import Link from "next/link";
+import Image from "next/image";
 import AvatarMenu from "./AvatarMenu";
 
 export default async function Navbar() {
@@ -11,7 +12,7 @@ export default async function Navbar() {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-black">
-          Logo
+          <Image src="/logo.png" alt="Roamfluencer logo" width={70} height={70}/>
         </Link>
 
         {/* Nav items */}
