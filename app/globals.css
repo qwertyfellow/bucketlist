@@ -106,8 +106,7 @@ body {
     }
 
     .card_grid {
-        @apply grid gap-5 justify-center;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+        @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
     }
 
     .card_grid-sm {
