@@ -30,14 +30,20 @@ const NewCreators = () => {
     },
   ];
 
-
-  return (
-    <>
-        <h1 className="text-30-bold mb-2">Top Creators</h1>
-        <div className="card_grid">
+  const renderCreatorCards = () => {
+    return <div className="card_grid">
             {creators.map((c, idx) => (
                 <CreatorCard key={idx} {...c} />
             ))}
+        </div>
+  }
+
+
+  return (
+    <>
+        <h1 className="text-30-bold mb-2">New Travel influencers</h1>
+        <div>
+          {renderCreatorCards()}
         </div>
     </>
   )

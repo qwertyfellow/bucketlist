@@ -19,8 +19,8 @@ export default function Home() {
         </main>
       </div>
 
+      <br />
       {/* Top content creators section */}
-
       <section className="section_container">
         <TopCreators />
       </section>
