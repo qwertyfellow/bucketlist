@@ -29,7 +29,7 @@ export default function HowItWorks() {
               {/* Step details */}
               <div className="w-full md:flex-1 mt-6 md:mt-0 text-center md:text-left">
                 <h3 className="text-2xl font-semibold text-gray-800">
-                  Step {step.id}: {step.title}
+                  Step {step.id}: <span className='color_highlight'>{step.title}</span>
                 </h3>
                 <p className="mt-4 text-gray-600 text-lg">{step.description}</p>
               </div>
@@ -48,8 +48,8 @@ export default function HowItWorks() {
   return (
     <section className="section_container">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800">
-          How It Works
+        <h2 className="section_heading">
+          <span className='color_highlight'>How</span> It Works
         </h2>
         <p className="mt-4 mb-12 text-center text-gray-600 max-w-2xl mx-auto">
           Share your journeys, inspire others, and earn by linking hotels, stays, and activities.

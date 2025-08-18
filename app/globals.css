@@ -72,6 +72,14 @@ body {
         @apply font-medium text-[20px] max-w-2xl break-words;
     }
 
+    .section_heading {
+        @apply text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2;
+    }
+
+    .color_highlight {
+        @apply text-primary
+    }
+
     /* Layout styles */
     .flex-between {
         @apply flex justify-between items-center;
@@ -98,7 +106,8 @@ body {
     }
 
     .card_grid {
-        @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+        @apply grid gap-5 justify-center;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
     }
 
     .card_grid-sm {

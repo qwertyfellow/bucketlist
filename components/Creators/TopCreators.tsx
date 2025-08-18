@@ -31,18 +31,20 @@ const TopCreators = () => {
   ];
 
   const renderCreatorCards = () => {
-    return <div className="card_grid">
-            {creators.map((c, idx) => (
-                <CreatorCard key={idx} {...c} />
-            ))}
-        </div>
+    return (
+      <>
+        {creators.map((c, idx) => (
+          <CreatorCard key={idx} {...c} />
+        ))}
+      </>
+    )
   }
 
 
   return (
     <>
-        <h1 className="text-30-bold mb-2">Top Travel influencers</h1>
-        <div>
+        <h1 className="section_heading"><span className="color_highlight">Top</span> Travel influencers</h1>
+        <div className="card_grid">
           {renderCreatorCards()}
         </div>
     </>
