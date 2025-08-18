@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import TopCreators from "@/components/Creators/TopCreators";
 import NewCreators from "@/components/Creators/NewCreators";
+import HowItWorks from "@/components/HowItWorks/HowItWorks";
 
 export default function Home() {
   return (
@@ -30,9 +31,8 @@ export default function Home() {
         <NewCreators />
       </section>
 
-      {/* New content creators section */}
-
       {/* How it works section */}
+      <HowItWorks />
 
       {/* Footer */}
     </>
