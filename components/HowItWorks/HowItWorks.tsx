@@ -32,6 +32,7 @@ export default function HowItWorks() {
                   Step {step.id}: <span className='color_highlight'>{step.title}</span>
                 </h3>
                 <p className="mt-4 text-gray-600 text-lg">{step.description}</p>
+                {step?.description2 && <p className="mt-4 color_highlight text-lg">{step?.description2}</p>}
               </div>
             </div>
 

@@ -17,6 +17,7 @@ export default function Home() {
           <span>
             {/* TODO: Fix the responsiveness of the link or change to buttons. */}
             <Link className="button_primary" href={"/bucketlist/create"}>Craft a travel story</Link>
+            <Link className="button_primary" href={"/bucketlist/create"}>Manage Travel consultations</Link>
           </span>
         </main>
       </div>

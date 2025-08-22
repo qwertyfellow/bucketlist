@@ -15,6 +15,7 @@ const steps = [
     id: 3,
     title: "Share Your Itinerary",
     description: "Write detailed itineraries, add travel tips, and link affiliate hotels, stays, and activities for monetization.",
+    description2: "You can specify few itineraries to be premium, which means, these itineraries will only be visible to paid users.",
     image: "/step3.png",
   },
   {
