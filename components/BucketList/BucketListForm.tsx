@@ -11,20 +11,26 @@ import editBucketListAction from "@/lib/actions/bucketlist/editBucketList";
 
 const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
+    // Form configuration fields
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isLive, setIsLive] = useState(false);
+    const [isPremium, setIsPremium] = useState(false);
     const [content, setContent] = useState("");
     const router = useRouter();
-
     const editMode = editBucketlist!=null;
-    console.log("Edit mode :: ", editMode)
+
+
+    // Side effects
     useEffect(() => {
+        // In-case of edit mode, populate the fields.
         if(editMode) {
             setIsLive(editBucketlist?.isLive)
+            setIsPremium(editBucketlist?.isPremium)
             setContent(editBucketlist?.content)
         }
     }, [editMode])
 
+    // Handle form submit
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
             // 1. Get the values from form data.
@@ -34,6 +40,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 description: formData.get("description") as string,
                 category: formData.get("category") as string,
                 isLive: formData.get("isLive") === "true",
+                isPremium: formData.get("isPremium") === "true",
                 content: content
             }
 
@@ -228,6 +235,48 @@ Good to know things etc etc.`
                 </label>
                 {/* Error */}
                 {errors.isLive && <p className="bucketlist-form_error">{errors.isLive}</p>}
+            </div>
+
+            <div className="space-y-2 w-full">
+                <label className="flex flex-wrap items-center gap-4 cursor-pointer w-full">
+                    <div className="relative group w-11 min-w-[44px] h-6">
+                    <input
+                        type="checkbox"
+                        checked={isPremium}
+                        onChange={(e) => setIsPremium(e.target.checked)}
+                        className="sr-only"
+                    />
+                    <input type="hidden" name="isPremium" value={isPremium ? "true" : "false"} />
+
+                    {/* Track */}
+                    <div
+                        className={`
+                        absolute top-0 left-0 w-full h-full rounded-full transition-colors duration-200
+                        ${isPremium ? "bg-blue-600" : "bg-gray-200"}
+                        group-active:bg-blue-500
+                        `}
+                    />
+
+                    {/* Thumb */}
+                    <div
+                        className={`
+                        absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white border border-gray-300 transition-transform duration-200
+                        ${isPremium ? "translate-x-full border-white" : ""}
+                        `}
+                    />
+                    </div>
+
+                    {/* Label */}
+                    <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-1">
+                    Make it Premium?{" "}
+                    <strong>
+                        (Making it premium shows it to only premium users on the internet. You can change
+                        it on the profile page later too.)
+                    </strong>
+                    </span>
+                </label>
+                {/* Error */}
+                {errors.isPremium && <p className="bucketlist-form_error">{errors.isPremium}</p>}
             </div>
 
 

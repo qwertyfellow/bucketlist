@@ -34,6 +34,7 @@ export const FETCH_BUCKETLIST_BY_ID = defineQuery(`
         views,
         likes,
         isLive,
+        isPremium,
         creator -> {
             _id,
             name,

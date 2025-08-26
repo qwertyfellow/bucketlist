@@ -16,7 +16,7 @@ const editBucketListAction = async (bucketListId: string, formData: FormData, co
     }
 
     // 2. Destructure the data from nextJs formdata
-    const { title, destination, description, category, isLive} = Object.fromEntries(
+    const { title, destination, description, category, isLive, isPremium} = Object.fromEntries(
         Array.from(formData).filter(([key]) => key !== "content")
     );
 
@@ -32,7 +32,8 @@ const editBucketListAction = async (bucketListId: string, formData: FormData, co
                 _type: "creator",
                 _ref: session.user?.sanityId
             },
-            isLive: isLive === "true"
+            isLive: isLive === "true",
+            isPremium: isPremium === "true"
         }
 
         // 4. Use write client and edit the item on sanity

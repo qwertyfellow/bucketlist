@@ -13,10 +13,6 @@ export const bucketList = defineType({
             validation: (Rule) => Rule.min(10).max(40).required().error("Please provide title.")
         }),
         defineField({
-            name: "isLive",
-            type: "boolean",
-        }),
-        defineField({
             name: "destination",
             type: "string",
             validation: (Rule) => Rule.min(1).required().error("Please provide destination.")
@@ -58,19 +54,26 @@ export const bucketList = defineType({
             type: "array",
             of: [{ type: "string" }],
         }),
-        // To be shown on preview page
         defineField({
             name: "views",
             type: "number",
             initialValue: 0
         }),
-        // To be shown on preview page
         defineField({
             name: "likes",
             type: "number",
             initialValue: 0
         }),
-        // To be shown on preview page
+        defineField({
+            name: "isLive",
+            type: "boolean",
+            initialValue: false
+        }),
+        defineField({
+            name: "isPremium",
+            type: "boolean",
+            initialValue: false
+        }),
         defineField({
             name: "createdAt",
             type: "datetime",
