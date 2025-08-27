@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { formSchema } from "@/lib/validation/zod/formSchema";
 import createBucketListAction from "@/lib/actions/bucketlist/createBucketList";
 import editBucketListAction from "@/lib/actions/bucketlist/editBucketList";
+import ImageUploader from "../Assets/ImageUploader";
 
 const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
@@ -279,6 +280,7 @@ Good to know things etc etc.`
                 {errors.isPremium && <p className="bucketlist-form_error">{errors.isPremium}</p>}
             </div>
 
+            <ImageUploader />
 
             <button
                 type="submit"

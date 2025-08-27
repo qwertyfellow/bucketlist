@@ -12,7 +12,11 @@ import {structureTool} from 'sanity/structure'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
 import {structure} from './sanity/structure'
+
+// Custom sanity plugins
 import { markdownSchema } from "sanity-plugin-markdown"
+import { media } from 'sanity-plugin-media'
+
 
 export default defineConfig({
   basePath: '/studio',
@@ -25,6 +29,10 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
-    markdownSchema()
+    markdownSchema(),
+
+    // Media plugin is for assets
+    // https://www.sanity.io/plugins/sanity-plugin-media
+    media()
   ],
 })
