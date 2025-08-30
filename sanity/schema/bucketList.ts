@@ -22,6 +22,11 @@ export const bucketList = defineType({
             type: "string",
             validation: (Rule) => Rule.min(30).max(100).required().error("Please provide description.")
         }),
+        defineField({
+            name: "coverImage",
+            type: "string",
+            initialValue: ""
+        }),
         /**
          * Slug is not needed as of now.
          */

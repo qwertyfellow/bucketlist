@@ -21,6 +21,7 @@ const Page = async () => {
         likes={item.likes}
         creatorName={item.creator.name}
         creatorImage={item?.creator?.image}
+        coverImage={item?.coverImage}
         slug={item.slug?.current}
       />
     ));

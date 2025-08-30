@@ -4,7 +4,7 @@ import { parseServerActionResponse } from "@/lib/utils";
 import { writeClient } from "@/sanity/lib/writeClient";
 import "server-only"
 
-const createBucketListAction = async (formData: FormData, content: string) => {
+const createBucketListAction = async (formData: FormData, content: string, coverImage: string) => {
 
     // 1. Verify session details
     const session = await auth();
@@ -33,7 +33,8 @@ const createBucketListAction = async (formData: FormData, content: string) => {
                 _ref: session.user?.sanityId
             },
             isLive: isLive === "true",
-            isPremium: isPremium === "true"
+            isPremium: isPremium === "true",
+            coverImage: coverImage
         }
 
         // 4. Use write client and write item to sanity

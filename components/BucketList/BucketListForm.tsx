@@ -14,12 +14,12 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
     // Form configuration fields
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [coverImage, setCoverImage] = useState("");
     const [isLive, setIsLive] = useState(false);
     const [isPremium, setIsPremium] = useState(false);
     const [content, setContent] = useState("");
     const router = useRouter();
     const editMode = editBucketlist!=null;
-
 
     // Side effects
     useEffect(() => {
@@ -28,6 +28,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
             setIsLive(editBucketlist?.isLive)
             setIsPremium(editBucketlist?.isPremium)
             setContent(editBucketlist?.content)
+            setCoverImage(editBucketlist?.coverImage)
         }
     }, [editMode])
 
@@ -53,11 +54,11 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
             if(editMode) {
                 // 3.1 Edit the bucketlist
                 console.log(`Editing the bucketlist with id ${editBucketlist?._id}.`)
-                result = await editBucketListAction(editBucketlist?._id, formData, content)
+                result = await editBucketListAction(editBucketlist?._id, formData, content, coverImage)
             } else {
                 // 3.2 Create the bucketlist
                 console.log("Creating the bucketlist.")
-                result = await createBucketListAction(formData, content)
+                result = await createBucketListAction(formData, content, coverImage)
             }
             if(result.status == "SUCCESS") {
                 toast.success("Your itinerary has been created successfully.");
@@ -195,7 +196,8 @@ Good to know things etc etc.`
                 />
                 {errors.content && <p className="bucketlist-form_error">{errors.content}</p>}
             </div>
-
+            <br />
+            <hr />
             <div className="space-y-2 w-full">
                 <label className="flex flex-wrap items-center gap-4 cursor-pointer w-full">
                     <div className="relative group w-11 min-w-[44px] h-6">
@@ -280,7 +282,16 @@ Good to know things etc etc.`
                 {errors.isPremium && <p className="bucketlist-form_error">{errors.isPremium}</p>}
             </div>
 
-            <ImageUploader />
+            <hr />
+            <br />
+
+            <label className="bucketlist-form_label">Cover image</label>
+            <strong>
+                (A cover image to showcase on your itinerary.)
+            </strong>
+            <ImageUploader onUploaded={(asset) => {
+                setCoverImage(asset?.url)
+            }}/>
 
             <button
                 type="submit"

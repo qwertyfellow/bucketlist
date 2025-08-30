@@ -6,7 +6,7 @@ import { useState } from "react"
 export default function ImageUploader({
   onUploaded,
 }: {
-  onUploaded?: (assetId: string) => void
+  onUploaded?: (response: any) => void
 }) {
   const [uploading, setUploading] = useState(false)
   const [preview, setPreview] = useState<string | null>(null)
@@ -19,10 +19,10 @@ export default function ImageUploader({
     setUploading(true)
 
     try {
-      const assetId = await uploadImageAction(file)
+      const result = await uploadImageAction(file)
       setUploading(false)
 
-      if (onUploaded) onUploaded(assetId)
+      if (onUploaded) onUploaded(result)
     } catch (err) {
       console.error("Upload failed", err)
       setUploading(false)
@@ -30,7 +30,7 @@ export default function ImageUploader({
   }
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col gap-3">
       <input
         type="file"
         accept="image/*"

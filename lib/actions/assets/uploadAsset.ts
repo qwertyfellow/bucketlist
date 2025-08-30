@@ -13,5 +13,8 @@ export async function uploadImageAction(file: File) {
     contentType: file.type,
   })
 
-  return asset._id // return asset id
+  return {
+    id: asset._id,
+    url: asset.url
+  }
 }
