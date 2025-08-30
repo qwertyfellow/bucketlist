@@ -46,7 +46,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
     return <>
     <h1 className="text-30-bold mb-2">Your bucketlists</h1>
     <p className="text-14-normal">You can edit, make live, delete the below itineraries by clicking on the itinerary.</p>
-    <hr className='mb-5'/>
+    <br />
     <div className="card_grid">
       {items.map((item: any) => (
         <BucketListCard
@@ -58,6 +58,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
         likes={item.likes}
         creatorName={item.creator.name}
         creatorImage={image}
+        coverImage={item?.coverImage}
         slug={item.slug?.current}
         />
       ))}
