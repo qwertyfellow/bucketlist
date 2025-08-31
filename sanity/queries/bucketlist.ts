@@ -45,7 +45,11 @@ export const FETCH_BUCKETLIST_BY_ID = defineQuery(`
 `);
 
 export const FETCH_BUCKETLISTS_BY_CREATOR_ID = defineQuery(`
-  *[_type == "bucketList" && (creator->_id == $id) ] | order(_createdAt desc) {
+  *[
+    _type == "bucketList" && (creator->_id == $id)
+    && (!defined($isLive) || isLive == $isLive)
+    && (!defined($isPremium) || isPremium == $isPremium)
+  ] | order(_createdAt desc) {
     _id,
     title,
     destination,
