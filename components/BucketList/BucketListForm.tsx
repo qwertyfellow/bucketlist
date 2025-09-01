@@ -109,7 +109,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
         <form action={formAction} className="bucketlist-form">
             <div className="space-y-2">
                 <label htmlFor="title" className="bucketlist-form_label">
-                Title
+                Title*
                 </label>
                 <input
                 id="title"
@@ -124,7 +124,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
             <div className="space-y-2">
                 <label htmlFor="destination" className="bucketlist-form_label">
-                Destination
+                Destination*
                 </label>
                 <input
                 id="destination"
@@ -139,7 +139,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
             <div className="space-y-2">
                 <label htmlFor="description" className="bucketlist-form_label">
-                Description
+                Description*
                 </label>
                 <textarea
                 id="description"
@@ -155,7 +155,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
             <div className="space-y-2">
                 <label htmlFor="category" className="bucketlist-form_label">
-                Category
+                Category*
                 </label>
                 <input
                 id="category"
@@ -170,7 +170,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
             <div className="space-y-2">
                 <label htmlFor="content" className="bucketlist-form_label">
-                Detailed itinerary content
+                Detailed itinerary content*
                 </label>
                 <MDEditor
                 id="content"
@@ -282,16 +282,16 @@ Good to know things etc etc.`
                 {errors.isPremium && <p className="bucketlist-form_error">{errors.isPremium}</p>}
             </div>
 
-            <hr />
             <br />
 
-            <label className="bucketlist-form_label">Cover image</label>
+            <label className="bucketlist-form_label">Cover image*</label>
             <strong>
                 (A cover image to showcase on your itinerary.)
             </strong>
             <ImageUploader onUploaded={(asset) => {
                 setCoverImage(asset?.url)
             }}/>
+            <hr />
 
             <button
                 type="submit"
