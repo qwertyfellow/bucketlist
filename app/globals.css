@@ -86,7 +86,7 @@ body {
     }
 
     .showcase {
-        @apply w-full min-h-[400px] flex flex-col py-10 px-6;
+        @apply w-full flex flex-col md:py-10 md:px-6 sm:py-6 sm:px-3;
     }
 
     .section_container {
@@ -158,7 +158,7 @@ body {
     }
 
     .button_primary {
-        @apply bg-secondary rounded px-3 py-2 mr-2 text-white;
+        @apply bg-secondary rounded px-3 py-2 m-1 text-white;
     }
 
     .button_danger {
