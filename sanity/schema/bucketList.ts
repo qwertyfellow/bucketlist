@@ -6,6 +6,14 @@ export const bucketList = defineType({
     title: "BucketList",
     type: "document",
     icon: UserIcon,
+    // For studio level defaults, initialValues does not apply when created through sanity client.
+    initialValue: {
+        likes: 0,
+        views: 0,
+        isLive: false,
+        isPremium: false,
+        coverImage: "",
+    },
     fields: [
         defineField({
             name: "title",

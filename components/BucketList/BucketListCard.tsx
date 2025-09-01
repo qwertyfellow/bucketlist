@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Heart } from 'lucide-react';
+import { Heart, MapPin} from 'lucide-react';
 import Link from 'next/link';
 import { useMemo } from 'react';
 
@@ -59,10 +59,10 @@ export default function BucketListCard({
 
           <div className="mt-auto">
             <div className="flex justify-between items-center mb-2">
-              <p className="text-14-normal text-gray-600 badge">{destination}</p>
+              <p className="text-14-normal text-gray-600 badge"><MapPin className='mr-2' style={{display: "inline", width: "20px", height: "20px"}}/>{destination}</p>
               <div className="flex items-center text-sm text-gray-500">
                 <Heart className="size-4 mr-1 text-red-500" />
-                {likes}
+                {likes ? likes : "0"}
               </div>
             </div>
 

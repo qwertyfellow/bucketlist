@@ -32,6 +32,8 @@ const createBucketListAction = async (formData: FormData, content: string, cover
                 _type: "creator",
                 _ref: session.user?.sanityId
             },
+            likes: 0,
+            views: 0,
             isLive: isLive === "true",
             isPremium: isPremium === "true",
             coverImage: coverImage
