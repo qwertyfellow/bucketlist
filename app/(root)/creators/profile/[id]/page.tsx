@@ -54,8 +54,8 @@ const Page = async ({
             width={250}
             height={250}
           />
-          <h1 className="sub-heading text-secondary mb-2">No bucketlists found</h1>
-          <h3 className="text-20-semibold mb-5">Please create new bucketlists</h3>
+          <h3 className="text-20-semibold">No bucketlists found</h3>
+          <h1 className="sub-heading text-secondary mb-2">Please create new bucketlists</h1>
         </div>
       )
     }
