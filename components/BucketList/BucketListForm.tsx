@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 import MDEditor from "@uiw/react-md-editor";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { formSchema } from "@/lib/validation/zod/formSchema";
+import { formSchema } from "@/lib/zod/validation/formSchema";
 import createBucketListAction from "@/lib/actions/bucketlist/createBucketList";
 import editBucketListAction from "@/lib/actions/bucketlist/editBucketList";
 import ImageUploader from "../Assets/ImageUploader";

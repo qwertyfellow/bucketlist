@@ -3,7 +3,7 @@ import { z } from "zod";
 export const formSchema = z.object({
     title: z.string().min(10, {
         message: "Title should be minimum of length 10."
-    }).max(35, {
+    }).max(40, {
         message: "Title can be maximum of length 40."
     }),
     destination: z.string().min(1, {
