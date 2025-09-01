@@ -90,7 +90,7 @@ body {
     }
 
     .section_container {
-        @apply px-6 py-10 w-full max-w-4xl mx-auto;
+        @apply px-6 py-10 w-full max-w-4xl mx-auto break-words;
     }
 
     .menuWrapper {
