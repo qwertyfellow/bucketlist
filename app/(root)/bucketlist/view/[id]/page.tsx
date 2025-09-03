@@ -27,7 +27,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
   if (!bucketlist) return notFound();
 
   // Destructure the data
-  const { title, category, content, creator, destination, description, likes, isLive } = bucketlist;
+  const { title, category, content, creator, destination, description, likes, isLive, views } = bucketlist;
   const isAuthorised = session?.user?.sanityId === bucketlist.creator?._id
   const parsedContent = md.render(content || "");
 
