@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <div className='showcase bg-secondary text-white'>
+    <div className='bg-secondary text-white'>
       <div className="section_container flex flex-col md:flex-row justify-between items-center gap-6">
 
         {/* Navigation Links */}
