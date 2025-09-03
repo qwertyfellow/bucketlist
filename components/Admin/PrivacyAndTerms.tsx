@@ -65,8 +65,8 @@ const PrivacyAndTerms = () => {
             <h3 className="text-xl font-semibold mb-3 text-gray-800">Contact</h3>
             <p className="text-gray-600 leading-relaxed">
             If you have questions about these policies, please contact us at{" "}
-            <a href="mailto:support@example.com" className="text-blue-600 underline">
-                support@example.com
+            <a href="mailto:chaitu.vsh@gmail.com" className="text-blue-600 underline">
+                chaitu.vsh@gmail.com
             </a>.
             </p>
         </section>

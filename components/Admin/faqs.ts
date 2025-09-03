@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "How do content creators make money out of it?",
     answer:
-      "Creators can publish free or premium itineraries. Premium itineraries can be purchased by users, and Roamfluencer enables a revenue share model to support creators."
+      "Creators can publish free or premium itineraries. Premium itineraries can be viewed only by paid users, and Roamfluencer enables a revenue share model to support creators."
   },
   {
     question: "What should an ideal bucketlist itinerary include?",

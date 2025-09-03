@@ -23,7 +23,7 @@ export default function Home() {
             }}>Craft a travel story</button>
             <button className="button_primary" onClick={() => {
               router.push("/bucketlist/create")
-            }} disabled>Manage Travel consultations</button>
+            }} disabled>Manage Travel consultations <span className="color_highlight">(Coming soon)</span></button>
           </span>
         </main>
       </div>

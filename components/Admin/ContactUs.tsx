@@ -32,7 +32,7 @@ const ContactUs = () => {
 
       {/* Footer Note */}
       <div className="mt-12 text-gray-500 text-sm">
-        Our support team is available Monday to Friday, 9 AM – 6 PM (PST).
+        Our support team is available Monday to Friday, 9 AM – 6 PM (IST).
       </div>
     </div>
   );
