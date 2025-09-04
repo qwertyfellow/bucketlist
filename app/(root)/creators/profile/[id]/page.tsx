@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { auth } from '@/auth';
@@ -67,7 +66,6 @@ const Page = async ({
           You can edit, make live, delete the below itineraries by clicking on the itinerary.
         </p>
         <br />
-        <BucketlistFilters />
         <div className="card_grid">
           {items.map((item: any) => (
             <BucketListCard
@@ -119,6 +117,7 @@ const Page = async ({
           </main>
         </div>
         <div className="section_container">
+          <BucketlistFilters />
           {renderBucketListItems(bucketListItems)}
         </div>
       </>
