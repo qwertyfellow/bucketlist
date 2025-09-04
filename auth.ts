@@ -6,6 +6,11 @@ import { FETCH_CREATOR_BY_GOOGLE_ID_QUERY } from "./sanity/queries/creator";
 import { cookies } from "next/headers";
 
 export const authOptions = {
+  trustedHosts: [
+    "localhost:3000",   // for local dev
+    "127.0.0.1:3000",   // optional
+    "bucketlist-phi.vercel.app"
+  ],
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
