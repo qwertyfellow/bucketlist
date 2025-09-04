@@ -1,6 +1,8 @@
 import FaQs from '@/components/Admin/FaQs';
 import { PageParams } from '@/constants/pages';
 
+export const dynamic = 'force-static'
+
 const Page = async  ({ params }: { params: Promise<PageParams> }) => {
 
     return (
