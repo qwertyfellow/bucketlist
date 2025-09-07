@@ -16,6 +16,8 @@ export const dynamic = 'force-static'
 export { metadata, viewport } from 'next-sanity/studio'
 
 export default function StudioPage() {
-  if(process.env.NODE_ENV!="development") return notFound()
+
+  // Sanity anyway has access provided, so only sanity project owners can access sanity studio.
+  // if(process.env.NODE_ENV!="development") return notFound()
   return <NextStudio config={config} />
 }
