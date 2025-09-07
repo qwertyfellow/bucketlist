@@ -9,11 +9,13 @@
 
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../sanity.config'
+import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-static'
 
 export { metadata, viewport } from 'next-sanity/studio'
 
 export default function StudioPage() {
+  if(process.env.NODE_ENV!="development") return notFound()
   return <NextStudio config={config} />
 }
