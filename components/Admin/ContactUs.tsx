@@ -19,7 +19,7 @@ const ContactUs = () => {
         </div>
 
         {/* Phone */}
-        <div className="flex items-center space-x-4">
+        {false && <div className="flex items-center space-x-4">
           <Phone className="w-6 h-6 text-primary" />
           <div>
             <h2 className="text-lg font-semibold text-gray-800">Phone</h2>
@@ -27,7 +27,7 @@ const ContactUs = () => {
             <br />
             <a className="text-gray-600 hover:text-primary">+91 9629614270</a>
           </div>
-        </div>
+        </div>}
       </div>
 
       {/* Footer Note */}
