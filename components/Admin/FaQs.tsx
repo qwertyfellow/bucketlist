@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is Roamfluencer about?",
+    question: "What is Roamfluencer about ?",
     answer: "Roamfluencer is a platform where travel influencers can design and share detailed travel itineraries.",
     line1: "Travel enthusiasists(users) can explore, rate, and follow their favorite travel creators. Users can also view the itineraries created by travel influencers to plan their travel needs."
   },
