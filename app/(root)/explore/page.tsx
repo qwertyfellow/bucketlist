@@ -37,6 +37,7 @@ const Page = async () => {
               creatorImage={item?.creator?.image}
               coverImage={item?.coverImage}
               slug={item.slug?.current}
+              badgeContent={item.isPremium ? "Premium" : null}
             />
           ))
         }

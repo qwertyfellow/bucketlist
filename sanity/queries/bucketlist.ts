@@ -13,6 +13,7 @@ export const FETCH_ALL_BUCKETLIST = defineQuery(`
         tags,
         views,
         likes,
+        isPremium,
         creator -> {
             _id,
             name,

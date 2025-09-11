@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Heart, MapPin} from 'lucide-react';
+import { Heart, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { useMemo } from 'react';
 
@@ -16,6 +16,7 @@ type BucketListCardProps = {
   creatorImage?: string;
   slug: string;
   id: string;
+  badgeContent?: string;
 };
 
 export default function BucketListCard({
@@ -28,6 +29,7 @@ export default function BucketListCard({
   creatorImage,
   slug,
   id,
+  badgeContent,
 }: BucketListCardProps) {
   const randomBg = useMemo(() => {
     const hue = Math.floor(Math.random() * 360);
@@ -50,8 +52,15 @@ export default function BucketListCard({
           />
         )}
 
-        {/* Gradient overlay (extends higher) */}
+        {/* Gradient overlay */}
         <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
+
+        {/* Badge (top-left) */}
+        {badgeContent && (
+          <div className="absolute top-0 left-0 z-20 bg-secondary text-white text-xs font-semibold px-3 py-1 shadow-md">
+            {badgeContent}
+          </div>
+        )}
 
         {/* Foreground content */}
         <div className="relative z-10 flex flex-col justify-between h-full p-5 mt-auto">
@@ -59,10 +68,16 @@ export default function BucketListCard({
 
           <div className="mt-auto">
             <div className="flex justify-between items-center mb-2">
-              <p className="text-14-normal text-gray-600 badge"><MapPin className='mr-2' style={{display: "inline", width: "20px", height: "20px"}}/>{destination}</p>
+              <p className="text-14-normal text-gray-600 badge">
+                <MapPin
+                  className="mr-2"
+                  style={{ display: 'inline', width: '20px', height: '20px' }}
+                />
+                {destination}
+              </p>
               <div className="flex items-center text-sm text-gray-500">
                 <Heart className="size-4 mr-1 text-red-500" />
-                {likes ? likes : "0"}
+                {likes ? likes : '0'}
               </div>
             </div>
 
