@@ -34,8 +34,13 @@ export const user = defineType({
             type: "datetime",
             readOnly: true,
             initialValue: () => new Date().toISOString(),
-        })
-
+        }),
+        defineField({
+            name: "savedItems",
+            title: "Saved Itineraries",
+            type: "array",
+            of: [{ type: "reference", to: [{ type: "bucketList" }] }],
+        }),
     ],
     preview: {
         select: {
