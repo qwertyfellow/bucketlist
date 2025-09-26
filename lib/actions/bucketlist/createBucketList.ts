@@ -16,7 +16,7 @@ const createBucketListAction = async (formData: FormData, content: string, cover
     }
 
     // 2. Destructure the data from nextJs formdata
-    const { title, destination, description, category, isLive, isPremium} = Object.fromEntries(
+    const { title, destination, category, isLive} = Object.fromEntries(
         Array.from(formData).filter(([key]) => key !== "content")
     );
 
@@ -25,7 +25,6 @@ const createBucketListAction = async (formData: FormData, content: string, cover
         const bucketList = {
             title: title,
             destination: destination.toString().toUpperCase(),
-            description: description,
             category: category.toString().toUpperCase(),
             content: content,
             creator: {
@@ -35,8 +34,9 @@ const createBucketListAction = async (formData: FormData, content: string, cover
             likes: 0,
             views: 0,
             isLive: isLive === "true",
-            isPremium: isPremium === "true",
             coverImage: coverImage
+            // isPremium: isPremium === "true",
+            // description: description,
         }
 
         // 4. Use write client and write item to sanity

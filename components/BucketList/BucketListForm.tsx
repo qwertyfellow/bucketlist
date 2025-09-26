@@ -16,7 +16,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [coverImage, setCoverImage] = useState("");
     const [isLive, setIsLive] = useState(false);
-    const [isPremium, setIsPremium] = useState(false);
+    // const [isPremium, setIsPremium] = useState(false);
     const [content, setContent] = useState("");
     const router = useRouter();
     const editMode = editBucketlist!=null;
@@ -26,7 +26,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
         // In-case of edit mode, populate the fields.
         if(editMode) {
             setIsLive(editBucketlist?.isLive)
-            setIsPremium(editBucketlist?.isPremium)
+            // setIsPremium(editBucketlist?.isPremium)
             setContent(editBucketlist?.content)
             setCoverImage(editBucketlist?.coverImage)
         }
@@ -42,7 +42,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 description: formData.get("description") as string,
                 category: formData.get("category") as string,
                 isLive: formData.get("isLive") === "true",
-                isPremium: formData.get("isPremium") === "true",
+                // isPremium: formData.get("isPremium") === "true",
                 content: content
             }
 
@@ -137,7 +137,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 {errors.destination && <p className="bucketlist-form_error">{errors.destination}</p>}
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
                 <label htmlFor="description" className="bucketlist-form_label">
                 Description*
                 </label>
@@ -151,7 +151,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 defaultValue={state.data.description}
                 />
                 {errors.description && <p className="bucketlist-form_error">{errors.description}</p>}
-            </div>
+            </div> */}
 
             <div className="space-y-2">
                 <label htmlFor="category" className="bucketlist-form_label">
@@ -240,7 +240,7 @@ Good to know things etc etc.`
                 {errors.isLive && <p className="bucketlist-form_error">{errors.isLive}</p>}
             </div>
 
-            <div className="space-y-2 w-full">
+            {/* <div className="space-y-2 w-full">
                 <label className="flex flex-wrap items-center gap-4 cursor-pointer w-full">
                     <div className="relative group w-11 min-w-[44px] h-6">
                     <input
@@ -251,7 +251,7 @@ Good to know things etc etc.`
                     />
                     <input type="hidden" name="isPremium" value={isPremium ? "true" : "false"} />
 
-                    {/* Track */}
+                    
                     <div
                         className={`
                         absolute top-0 left-0 w-full h-full rounded-full transition-colors duration-200
@@ -260,7 +260,7 @@ Good to know things etc etc.`
                         `}
                     />
 
-                    {/* Thumb */}
+                    
                     <div
                         className={`
                         absolute top-[2px] left-[2px] h-5 w-5 rounded-full bg-white border border-gray-300 transition-transform duration-200
@@ -269,7 +269,7 @@ Good to know things etc etc.`
                     />
                     </div>
 
-                    {/* Label */}
+                    
                     <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-1">
                     Make it Premium?{" "}
                     <strong>
@@ -278,9 +278,8 @@ Good to know things etc etc.`
                     </strong>
                     </span>
                 </label>
-                {/* Error */}
                 {errors.isPremium && <p className="bucketlist-form_error">{errors.isPremium}</p>}
-            </div>
+            </div> */}
 
             <br />
 

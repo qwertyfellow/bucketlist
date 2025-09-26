@@ -26,27 +26,10 @@ export const bucketList = defineType({
             validation: (Rule) => Rule.min(1).required().error("Please provide destination.")
         }),
         defineField({
-            name: "description",
-            type: "string",
-            validation: (Rule) => Rule.min(30).max(100).required().error("Please provide description.")
-        }),
-        defineField({
             name: "coverImage",
             type: "string",
             initialValue: ""
         }),
-        /**
-         * Slug is not needed as of now.
-         */
-        // defineField({
-        //     name: "slug",
-        //     type: "slug",
-        //     options: {
-        //         source: (document) => `${document.title}-${document.creator?._ref || ""}`,
-        //         maxLength: 40,
-        //     },
-        //     validation: (Rule) => Rule.required(),
-        // }),
         defineField({
             name: "category",
             type: "string",
@@ -83,15 +66,32 @@ export const bucketList = defineType({
             initialValue: false
         }),
         defineField({
-            name: "isPremium",
-            type: "boolean",
-            initialValue: false
-        }),
-        defineField({
             name: "createdAt",
             type: "datetime",
             readOnly: true,
             initialValue: () => new Date().toISOString(),
         }),
+        /**
+         * Slug is not needed as of now.
+         */
+        // defineField({
+        //     name: "slug",
+        //     type: "slug",
+        //     options: {
+        //         source: (document) => `${document.title}-${document.creator?._ref || ""}`,
+        //         maxLength: 40,
+        //     },
+        //     validation: (Rule) => Rule.required(),
+        // }),
+        // defineField({
+        //     name: "description",
+        //     type: "string",
+        //     validation: (Rule) => Rule.min(30).max(100).required().error("Please provide description.")
+        // }),
+        // defineField({
+        //     name: "isPremium",
+        //     type: "boolean",
+        //     initialValue: false
+        // }),
     ]
 });

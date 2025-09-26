@@ -27,7 +27,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
   if (!bucketlist) return notFound();
 
   // Destructure the data
-  const { title, category, content, creator, destination, description, likes, isLive, views } = bucketlist;
+  const { title, category, content, creator, destination, likes, isLive, views } = bucketlist;
   const isAuthorised = session?.user?.sanityId === bucketlist.creator?._id
   const parsedContent = md.render(content || "");
 
@@ -47,9 +47,6 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
               <h1 className="heading text-secondary flex items-center gap-2">
                 {title}
               </h1>
-
-              {/* Description */}
-              <p className="text-30-semibold text-white mb-4">{description}</p>
 
               {/* Row: Badges + Action Buttons */}
               <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">

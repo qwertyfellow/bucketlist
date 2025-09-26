@@ -9,11 +9,11 @@ export const formSchema = z.object({
     destination: z.string().min(1, {
         message: "Destination is required."
     }),
-    description: z.string().min(30, {
-        message: "Description should be minimum of length 30."
-    }).max(100, {
-        message: "Description can be maximum length of 100."
-    }),
+    // description: z.string().min(30, {
+    //     message: "Description should be minimum of length 30."
+    // }).max(100, {
+    //     message: "Description can be maximum length of 100."
+    // }),
     category: z.string().min(5, {
         message: "Category should be minimum of length 5."
     }).max(20, {
