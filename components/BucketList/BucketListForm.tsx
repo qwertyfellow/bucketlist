@@ -116,7 +116,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 name="title"
                 className="bucketlist-form_input"
                 required
-                placeholder="Bucketlist title"
+                placeholder="Ex: An adventurous trip in Bali"
                 defaultValue={state.data.title}
                 />
                 {errors.title && <p className="bucketlist-form_error">{errors.title}</p>}
@@ -131,7 +131,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 name="destination"
                 className="bucketlist-form_input"
                 required
-                placeholder="Bucketlist destination"
+                placeholder="Ex: Bali, Indonesia"
                 defaultValue={state.data.destination}
                 />
                 {errors.destination && <p className="bucketlist-form_error">{errors.destination}</p>}
@@ -162,7 +162,7 @@ const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
                 name="category"
                 className="bucketlist-form_input"
                 required
-                placeholder="Bucketlist category Ex. Adventure, Beach, Cultural etc"
+                placeholder="Ex: Adventure, Beach, Cultural etc"
                 defaultValue={state.data.category}
                 />
                 {errors.category && <p className="bucketlist-form_error">{errors.category}</p>}
@@ -284,9 +284,6 @@ Good to know things etc etc.`
             <br />
 
             <label className="bucketlist-form_label">Cover image*</label>
-            <strong>
-                (A cover image to showcase on your itinerary.)
-            </strong>
             <ImageUploader onUploaded={(asset) => {
                 setCoverImage(asset?.url)
             }}/>
