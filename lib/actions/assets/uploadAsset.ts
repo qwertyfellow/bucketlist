@@ -2,7 +2,7 @@
 
 import { writeClient } from "@/sanity/lib/writeClient"
 
-export async function uploadImageAction(file: File) {
+export async function uploadImage(file: File) {
   // Convert File → ArrayBuffer → Buffer
   const arrayBuffer = await file.arrayBuffer()
   const buffer = Buffer.from(arrayBuffer)

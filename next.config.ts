@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   experimental: {
     ppr: 'incremental',
     serverActions: {
-      bodySizeLimit: "5MB"
+      bodySizeLimit: "30MB"
     }
   },
   typescript: {

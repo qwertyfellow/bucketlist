@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useActionState, useEffect } from "react";
+import { useState, useActionState, useEffect } from "react";
 import { toast } from 'sonner'
 import MDEditor from "@uiw/react-md-editor";
 import { z } from "zod";
@@ -227,16 +227,12 @@ Good to know things etc etc.`
                     />
                     </div>
 
-                    {/* Label */}
-                    <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex-1">
-                    Make it live?{" "}
-                    <strong>
-                        (Making it live shows it to all users on the internet. You can change
-                        it on the profile page later too.)
-                    </strong>
-                    </span>
+                    <p className=" font-medium text-gray-900 dark:text-gray-300 flex-1">
+                        <label className="bucketlist-form_label">Make the itinerary live?</label>
+                    </p>
                 </label>
-                {/* Error */}
+                <p className="mb-2 text-gray-600">Making it live shows it to all users on the internet. You can change
+                        it on the profile page later too.</p>
                 {errors.isLive && <p className="bucketlist-form_error">{errors.isLive}</p>}
             </div>
 
@@ -283,12 +279,12 @@ Good to know things etc etc.`
 
             <br />
 
-            <label className="bucketlist-form_label">Cover image*</label>
-            <ImageUploader onUploaded={(asset) => {
-                setCoverImage(asset?.url)
-            }}/>
+            <ImageUploader
+                onUploaded={(asset) => {
+                    setCoverImage(asset?.url)
+                }}
+            />
             <hr />
-
             <button
                 type="submit"
                 className="button_primary"
