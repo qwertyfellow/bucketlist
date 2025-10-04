@@ -144,6 +144,10 @@ body {
         @apply bg-secondary rounded px-3 py-2 m-1 text-white;
     }
 
+    .button_primary:disabled {
+        @apply bg-gray-300 text-gray-500 cursor-not-allowed opacity-60;
+    }
+
     .button_danger {
         @apply bg-red-800 rounded px-5 py-1 mr-2 text-white;
     }
@@ -163,6 +167,10 @@ body {
 
     .bottom-right-fixed {
         @apply fixed bottom-4 right-4 z-50 text-primary font-semibold;
+    }
+
+    .rotate {
+        @apply w-10 h-10 rounded-full animate-[spin_2s_linear_infinite]
     }
 }
 

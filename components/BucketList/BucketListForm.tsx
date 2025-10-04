@@ -12,6 +12,9 @@ import ImageUploader from "../Assets/ImageUploader";
 
 const BucketListForm = ({editBucketlist}: {editBucketlist?: any}) => {
 
+    // State indicators
+    const [isUploading, setIsUploading] = useState(false);
+    
     // Form configuration fields
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [coverImage, setCoverImage] = useState("");
@@ -282,13 +285,17 @@ Good to know things etc etc.`
             <ImageUploader
                 onUploaded={(asset) => {
                     setCoverImage(asset?.url)
+                    setIsUploading(false)
+                }}
+                onUploading={(status) => {
+                    setIsUploading(status)
                 }}
             />
             <hr />
             <button
                 type="submit"
                 className="button_primary"
-                disabled={isPending}
+                disabled={isPending || isUploading}
             >
                 {isPending ? "Submitting your itinerary..." : "Submit Your Itinerary"}
             </button>
