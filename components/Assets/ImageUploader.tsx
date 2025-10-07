@@ -1,93 +1,84 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Loader } from "lucide-react"
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
-import { storage } from "@/lib/firebase/firebase"
+import { useState } from "react";
+import { Loader } from "lucide-react";
 
-export default function ImageUploader({ onUploaded, onUploading, onUploadFailed }: {
-  onUploaded?: (res: any) => void
-  onUploadFailed?: (err: any) => void
-  onUploading?: (uploading: boolean) => void
+export default function ImageUploader({
+  onUploaded,
+  onUploading,
+  onUploadFailed,
+}: {
+  onUploaded?: (response: any) => void;
+  onUploadFailed?: (response: any) => void;
+  onUploading?: (response: any) => void;
 }) {
-
-  // Variable states
-  const [fileName, setFileName] = useState<string | null>(null)
-  const [preview, setPreview] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
-
-  // Action states
-  const [uploading, setUploading] = useState(false)
+  const [uploading, setUploading] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-    setFileName(file.name)
-    setPreview(URL.createObjectURL(file))
-    setError(null)
-    setUploading(true)
+    setPreview(URL.createObjectURL(file));
+    setFileName(file.name);
+    setUploading(true);
+    setError(null);
 
     try {
-      console.log("1. Trying to upload")
-      if (onUploading) onUploading(true)
-      const storageRef = ref(storage, `images/${file.name}`)
-      console.log("storageRef", storageRef)
-      const uploadTask = uploadBytesResumable(storageRef, file)
-      console.log("uploadTask", uploadTask)
+      if (onUploading) onUploading(true);
 
-      uploadTask.on(
-        "state_changed",
-        null,
-        (err) => {
-          setUploading(false)
-          setPreview(null)
-          setFileName(null)
-          setError(err.message)
-          if (onUploadFailed) onUploadFailed(err)
-        },
-        async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-          console.log("downloadURL", downloadURL)
-          setUploading(false)
-          if (onUploaded) onUploaded({ url: downloadURL, name: file.name })
-        }
-      )
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/file/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Upload failed");
+
+      const result = await res.json();
+      setUploading(false);
+      if (onUploaded) onUploaded(result);
     } catch (err: any) {
-      setUploading(false)
-      setPreview(null)
-      setFileName(null)
-      setError(err.message || "Upload failed")
-      if (onUploadFailed) onUploadFailed(err)
+      setUploading(false);
+      setPreview(null);
+      setFileName(null);
+      const msg = err?.message || "Failed to upload image. Please try again.";
+      setError(msg);
+      if (onUploadFailed) onUploadFailed(err);
     }
-  }
+  };
 
   return (
-    <div>
-      <label className="bucketlist-form_label">Cover image*</label>
-      <p className="mb-2 text-gray-600">JPEG, PNG up to 100MB</p>
+    <div className="relative w-32">
+      {fileName && <p className="text-sm mb-1 font-medium">{fileName}</p>}
 
-      <input type="file" accept="image/*" onChange={handleFileChange} className="cursor-pointer" />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="cursor-pointer"
+      />
 
       {preview && (
-        <div className="relative w-32 h-32 mt-2">
-          <img src={preview} alt="Preview" className="w-full h-full object-cover rounded-md border" />
-
-          {fileName && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center p-1 truncate rounded-b-md">
-              {fileName}
-            </div>
-          )}
-
+        <div className="relative w-32 h-32">
+          <img
+            src={preview}
+            alt="Preview"
+            className="w-full h-full object-cover rounded-md border"
+          />
           {uploading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-md">
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-md">
               <Loader className="animate-spin text-white w-6 h-6" />
             </div>
           )}
         </div>
       )}
 
-      {error && <p className="bucketlist-form_error mt-2">{error}</p>}
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
-  )
+  );
 }

@@ -1,22 +1,36 @@
-import { writeClient } from "@/sanity/lib/writeClient"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server";
+import { adminStorage } from "@/lib/firebase/firebaseAdmin";
+import { auth } from "@/auth";
 
-export async function POST(req: Request) {
-  const formData = await req.formData()
-  const file = formData.get("file") as File | null
+export async function POST(req: NextRequest) {
 
-  if (!file) {
-    return NextResponse.json({ error: "No file uploaded" }, { status: 400 })
-  }
+  // Only authenticated users
+  const session = await auth();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
-  try {
-    const asset = await writeClient.assets.upload("image", file, {
-      filename: file.name,
-      contentType: file.type,
-    })
+  const formData = await req.formData();
+  const file = formData.get("file") as File;
 
-    return NextResponse.json({ id: asset._id, url: asset.url })
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 })
-  }
+  if (!file) return NextResponse.json({ error: "No file provided" }, { status: 400 });
+
+  const filePath = `images/${session.user.sanityId}/${Date.now()}-${file.name}`;
+  const storageFile = adminStorage.file(filePath);
+
+  // Convert File to Buffer
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  // Upload
+  await storageFile.save(buffer, {
+    contentType: file.type,
+    resumable: false,
+    metadata: {
+      firebaseStorageDownloadTokens: crypto.randomUUID(),
+    },
+  });
+
+  // Generate public URL
+  const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(filePath)}?alt=media`;
+
+  return NextResponse.json({ url: publicUrl });
 }
