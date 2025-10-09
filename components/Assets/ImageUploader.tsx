@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader } from "lucide-react";
+import { generateUploadUrl } from "@/lib/actions/assets/generatePreSignedURL";
 
 export default function ImageUploader({
   onUploaded,
@@ -14,8 +15,8 @@ export default function ImageUploader({
 }) {
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -29,24 +30,28 @@ export default function ImageUploader({
     try {
       if (onUploading) onUploading(true);
 
-      const formData = new FormData();
-      formData.append("file", file);
+      // Step 1: Generate presigned URL
+      const { url, filePath } = await generateUploadUrl(file.name, file.type);
 
-      const res = await fetch("/api/file/upload", {
-        method: "POST",
-        body: formData,
+      // Step 2: Upload directly to Firebase
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": file.type },
+        body: file,
       });
 
       if (!res.ok) throw new Error("Upload failed");
 
-      const result = await res.json();
+      // Step 3: Construct public URL
+      const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(filePath)}?alt=media`;
+
       setUploading(false);
-      if (onUploaded) onUploaded(result);
+      if (onUploaded) onUploaded({ url: publicUrl });
     } catch (err: any) {
       setUploading(false);
       setPreview(null);
       setFileName(null);
-      const msg = err?.message || "Failed to upload image. Please try again.";
+      const msg = err?.message || "Upload failed";
       setError(msg);
       if (onUploadFailed) onUploadFailed(err);
     }
