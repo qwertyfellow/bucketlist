@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: "*",
       },
-    ]
+    ],
+    unoptimized: true
   },
   experimental: {
     ppr: 'incremental',

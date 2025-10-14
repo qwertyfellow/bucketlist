@@ -12,6 +12,8 @@ import BucketListCard from '@/components/BucketList/BucketListCard';
 import { FETCH_CREATOR_BY_SANITY_ID_QUERY } from '@/sanity/queries/creator';
 import { FETCH_BUCKETLISTS_BY_CREATOR_ID } from '@/sanity/queries/bucketlist';
 import BucketlistFilters from '@/components/BucketList/BucketListFilters';
+import { Edit } from 'lucide-react';
+import Link from 'next/link';
 
 const Page = async ({
   params,
@@ -110,6 +112,7 @@ const Page = async ({
                 />
               )}
               <h1 className="heading text-secondary">Welcome, {name}</h1>
+              <Link href={`/creators/profile/edit/${id}`}><Edit /></Link>
             </div>
             <p className="text-30-semibold text-white mb-5">
               This is the place where you can find all details related to your account.
