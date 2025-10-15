@@ -39,7 +39,12 @@ export const user = defineType({
             name: "savedItems",
             title: "Saved Itineraries",
             type: "array",
-            of: [{ type: "reference", to: [{ type: "bucketList" }] }],
+            of: [
+                {
+                    type: "string",
+                    description: "Stores the IDs of saved bucketlists instead of full references.",
+                },
+            ],
         }),
     ],
     preview: {

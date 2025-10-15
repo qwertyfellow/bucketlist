@@ -6,7 +6,6 @@ import { writeClient } from "@/sanity/lib/writeClient";
 import "server-only";
 
 const deleteBucketListAction = async (bucketListId: string) => {
-    console.log("id", bucketListId)
 
     // 1. Verify session details
     const session = await auth();
@@ -19,7 +18,9 @@ const deleteBucketListAction = async (bucketListId: string) => {
 
     try {
         // 2. Use write client to delete the item from Sanity
-        const response = await writeClient.delete(bucketListId);
+        const response = await writeClient.delete(bucketListId).catch(err => {
+            throw err;
+        });
 
         // 3. Successful response
         return parseServerActionResponse({

@@ -13,9 +13,10 @@ const DeleteBucketlistButton = ({ id: bucketListId, creatorId }: { id: string, c
 
         try {
             await deleteBucketListAction(bucketListId);
-            router.push(`/creators/profile/${creatorId}`); // or any other page
         } catch (err) {
             alert("Failed to delete bucketlist.");
+        } finally {
+            router.push(`/creators/profile/${creatorId}`);
         }
     };
 
