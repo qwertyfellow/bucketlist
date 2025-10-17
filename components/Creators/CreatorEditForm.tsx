@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import ImageUploader from "../Assets/ImageUploader";
 import updateCreatorAction from "@/lib/actions/creator/updateCreator";
 import CreatorCard from "./CreatorCard";
+import { Eye, Pencil } from "lucide-react";
 
 type CreatorEditFormProps = {
   creator: {
@@ -23,6 +24,7 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
   const [bio, setBio] = useState(creator?.bio || "");
   const [image, setImage] = useState(creator?.image || "");
   const [isUploading, setIsUploading] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   const router = useRouter();
 
@@ -39,7 +41,7 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
 
       if (result?.status === "SUCCESS") {
         toast.success("Profile updated successfully!");
-        router.push(`/creators/profile/${id}`)
+        router.push(`/creators/profile/${id}`);
       } else {
         toast.error(result?.error);
       }
@@ -61,9 +63,26 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
   });
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 w-full">
-      {/* --- Left: Form Section --- */}
-      <form action={formAction} className="bucketlist-form space-y-6 flex-1">
+    <div className="relative flex flex-col md:flex-row gap-10 w-full">
+      <button
+        type="button"
+        onClick={() => setShowPreview(!showPreview)}
+        className="md:hidden absolute top-2 right-2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 shadow-sm transition-all"
+        aria-label={showPreview ? "Edit profile" : "Preview profile"}
+      >
+        {showPreview ? (
+          <Pencil className="w-5 h-5" />
+        ) : (
+          <Eye className="w-5 h-5" />
+        )}
+      </button>
+
+      <form
+        action={formAction}
+        className={`bucketlist-form space-y-6 flex-1 ${
+          showPreview ? "hidden md:block" : "block"
+        }`}
+      >
         <div className="space-y-2">
           <label htmlFor="name" className="bucketlist-form_label">
             Name*
@@ -102,8 +121,15 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
               setIsUploading(false);
             }}
             onUploading={(status) => setIsUploading(status)}
-            showPreview={true}
+            showPreview={false}
           />
+          {image && (
+            <img
+              src={image}
+              alt="Profile Preview"
+              className="rounded-xl mt-3 w-32 h-32 object-cover border border-gray-200"
+            />
+          )}
         </div>
 
         <button
@@ -115,10 +141,15 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
         </button>
       </form>
 
-      {/* --- Right: Live Preview --- */}
-      <div className="flex-1">
+      <div
+        className={`flex-1 ${
+          showPreview ? "block" : "hidden md:block"
+        } transition-all`}
+      >
         <h3 className="text-lg font-semibold mb-4">Creator card</h3>
-        <p className="mb-4">Below is a preview of how your profile card looks like.</p>
+        <p className="mb-4">
+          Below is a preview of how your profile card looks like.
+        </p>
         <CreatorCard
           id={creator._id}
           name={name || "Creator Name"}

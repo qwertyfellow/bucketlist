@@ -124,7 +124,7 @@ body {
 
     /* Bucketlist form classes */
     .bucketlist-form {
-        @apply max-w-4xl mx-auto p-6 border border-gray-200 rounded-2xl bg-white space-y-6;
+        @apply w-full md:max-w-4xl md:mx-auto p-6 border border-gray-200 rounded-2xl bg-white space-y-6;
     }
 
     .bucketlist-form_label {
