@@ -102,15 +102,8 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
               setIsUploading(false);
             }}
             onUploading={(status) => setIsUploading(status)}
-            showPreview={false}
+            showPreview={true}
           />
-          {image && (
-            <img
-              src={image}
-              alt="Profile Preview"
-              className="rounded-xl mt-3 w-32 h-32 object-cover border border-gray-200"
-            />
-          )}
         </div>
 
         <button
