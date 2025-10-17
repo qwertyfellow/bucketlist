@@ -40,15 +40,15 @@ export default function CreatorCard({
           {/* Stats */}
           <div className="flex items-center justify-start gap-4 text-xs text-gray-200">
             {/* Stories */}
-            <div className="flex items-center gap-1">
+            {storiesCount && <div className="flex items-center gap-1">
               <BookOpen className="size-3 text-blue-300" />
               <span>{storiesCount}</span>
-            </div>
+            </div>}
             {/* Views */}
-            <div className="flex items-center gap-1">
+            {viewsCount && <div className="flex items-center gap-1">
               <Eye className="size-3 text-green-300" />
               <span>{viewsCount}</span>
-            </div>
+            </div>}
           </div>
         </div>
       </div>

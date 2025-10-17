@@ -8,10 +8,12 @@ export default function ImageUploader({
   onUploaded,
   onUploading,
   onUploadFailed,
+  showPreview,
 }: {
   onUploaded?: (response: any) => void;
   onUploadFailed?: (response: any) => void;
   onUploading?: (response: any) => void;
+  showPreview: boolean;
 }) {
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
@@ -68,7 +70,7 @@ export default function ImageUploader({
         className="cursor-pointer"
       />
 
-      {preview && (
+      {showPreview && preview && (
         <div className="relative w-32 h-32">
           <img
             src={preview}

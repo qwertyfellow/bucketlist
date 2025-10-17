@@ -1,19 +1,19 @@
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import { auth } from '@/auth';
 import { client } from '@/sanity/lib/client';
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import { PageParams, SearchParams } from '@/constants/pages'
 import NotLoggedIn from '@/components/Auth/NotLoggedIn';
 import NotACreatorProfile from '@/components/Auth/NotACreatorProfile';
 import NotAuthorised from '@/components/Auth/NotAuthorised';
 import BucketListCard from '@/components/BucketList/BucketListCard';
+import BucketlistFilters from '@/components/BucketList/BucketListFilters';
+import { Edit } from 'lucide-react';
 
 import { FETCH_CREATOR_BY_SANITY_ID_QUERY } from '@/sanity/queries/creator';
 import { FETCH_BUCKETLISTS_BY_CREATOR_ID } from '@/sanity/queries/bucketlist';
-import BucketlistFilters from '@/components/BucketList/BucketListFilters';
-import { Edit } from 'lucide-react';
-import Link from 'next/link';
 
 const Page = async ({
   params,
@@ -40,6 +40,7 @@ const Page = async ({
     }),
   ]);
 
+  // If creator not found → 404
   if (!creator) return notFound();
 
   const { bio, email, image, name } = creator;
