@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link";
+
 import styles from "./page.module.css";
 import HowItWorks from "@/components/HowItWorks/HowItWorks";
 import { useRouter } from "next/navigation";
@@ -21,9 +21,9 @@ export default function Home() {
             <button className="button_primary" onClick={() => {
               router.push("/bucketlist/create")
             }}>Craft a travel story</button>
-            <button className="button_primary" onClick={() => {
-              router.push("/bucketlist/create")
-            }} disabled>Manage Travel consultations <span className="color_highlight">(Coming soon)</span></button>
+            <button className="button_primary_outline" onClick={() => {
+              router.push("/creators/manage")
+            }}>Manage Travel consultations</button>
           </span>
         </main>
       </div>
