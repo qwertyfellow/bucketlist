@@ -7,6 +7,7 @@ import ImageUploader from "../Assets/ImageUploader";
 import updateCreatorAction from "@/lib/actions/creator/updateCreator";
 import CreatorCard from "./CreatorCard";
 import { Eye, Pencil } from "lucide-react";
+import Link from "next/link";
 
 type CreatorEditFormProps = {
   creator: {
@@ -20,6 +21,7 @@ type CreatorEditFormProps = {
 const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
 
   // State for form fields
+  const id = creator?._id;
   const [name, setName] = useState(creator?.name || "");
   const [bio, setBio] = useState(creator?.bio || "");
   const [image, setImage] = useState(creator?.image || "");
@@ -31,7 +33,6 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
   // Server action
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
-      const id = creator?._id;
       const result = await updateCreatorAction({
         id,
         name,
@@ -125,13 +126,22 @@ const CreatorEditForm = ({ creator }: CreatorEditFormProps) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="button_primary"
-          disabled={isPending || isUploading}
-        >
-          {isPending ? "Updating profile..." : "Save Changes"}
-        </button>
+        <div>
+          <button
+            type="submit"
+            className="button_primary"
+            disabled={isPending || isUploading}
+          >
+            {isPending ? "Updating profile..." : "Save Changes"}
+          </button>
+
+          <Link
+            className="button_primary_outline"
+            href={`/creators/profile/${id}`}
+          >
+            {"Cancel"}
+          </Link>
+        </div>
       </form>
 
       <div

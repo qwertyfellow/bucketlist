@@ -46,8 +46,8 @@ const Page = async ({
             <div className="flex items-center gap-4 mb-4">
               <h1 className="heading text-secondary">Edit Profile</h1>
             </div>
-            <p className="text-30-semibold text-white mb-5">
-              Update your creator information below.
+            <p className="text-30-semibold text-white">
+              Update your account information below.
             </p>
           </main>
         </div>
