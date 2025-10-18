@@ -1,5 +1,3 @@
-import React from 'react'
-
 const PrivacyAndTerms = () => {
   return (
     <div className="rounded-2xl bg-white">
