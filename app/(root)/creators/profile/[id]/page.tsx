@@ -109,14 +109,14 @@ const Page = async ({
                   alt={`${name}'s avatar`}
                   width={64}
                   height={64}
-                  className="rounded-full border border-white"
+                  className="avatar h-[50px] w-[50px] object-cover"
                 />
               )}
-              <h1 className="heading text-secondary">Welcome, {name}</h1>
+              <h1 className="heading text-secondary">{name}</h1>
               <Link href={`/creators/profile/edit/${id}`}><Edit /></Link>
             </div>
-            <p className="text-30-semibold text-white mb-5">
-              This is the place where you can find all details related to your account.
+            <p className="text-30-semibold text-white">
+              Find everything related to your account here.
             </p>
           </main>
         </div>

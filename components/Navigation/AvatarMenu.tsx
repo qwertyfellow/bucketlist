@@ -39,9 +39,9 @@ export default function AvatarMenu({ user }: AvatarMenuProps) {
       <Image
         src={user?.image || "/avatar.jpg"}
         alt={user?.name || "User Avatar"}
-        width={36}
-        height={36}
-        className="avatar"
+        width={50}
+        height={50}
+        className="avatar h-[40px] w-[40px] object-cover"
         onClick={() => setIsOpen((prev) => !prev)}
         onMouseEnter={() => setIsOpen((prev) => !prev)}
         onFocus={() => setIsOpen((prev) => !prev)}
